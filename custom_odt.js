@@ -39,13 +39,13 @@
 			var plantillas = ['ejemplo.odt','ejemplo_erroneo.odt']; 			
 			var parametro = jQuery('div#tipo').html();	
 			
-			var seleccion = plantillas[2];
+			var seleccion = plantillas[1];
 			
 			var url1 = 'https://isaacmarco.github.io/odt/'
 			var nombre = seleccion;
 			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
 			
-            req.open('GET',url1 + nombre); 
+            req.open('GET','https://isaacmarco.github.io/odt/ejemplo_erroneo.odt'); //'url1 + nombre); 
 			 
             req.responseType = 'arraybuffer';
             
