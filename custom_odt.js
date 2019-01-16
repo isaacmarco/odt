@@ -30,10 +30,13 @@
             });
         }
 		
+		window.alert("1");
+		
         if (typeof someObject == 'undefined') $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js', function () {
 			
             var req = new XMLHttpRequest();
 			
+			window.alert("2");
 			
             req.open('GET', 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
@@ -83,6 +86,7 @@
                 link.click();
             });
 			
+			window.alert("3");
 			
             req.send();
             $.loadScript('http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/jszip/dist/jszip.min.js');
