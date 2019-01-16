@@ -41,10 +41,10 @@
 			// obtener el tipo de plantilla 
 			//var parametro = jQuery('div#tipo').html();
 			
-			var rutaBase = 'https://isaacmarco.github.io/odt/';
+			//var rutaBase = '';
 			//var plantilla = plantillas[0];
 			//var extension = '.odt';
-			var rutaPlantilla = rutaBase + 'ejemplo.odt';
+			var rutaPlantilla = https://isaacmarco.github.io/odt/ejemplo.odt';
 			
             req.open('GET', rutaPlantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
