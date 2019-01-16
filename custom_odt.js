@@ -36,8 +36,11 @@
 			
             var req = new XMLHttpRequest();
 			
+			var url1 = 'https://isaacmarco.github.io/odt/ejemplo.odt';
+			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
 			
-            req.open('GET', 'https://isaacmarco.github.io/odt/ejemplo.odt'); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
+            req.open('GET',url2 ); 
+			 
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
