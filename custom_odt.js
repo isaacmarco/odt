@@ -39,7 +39,7 @@
 			var url1 = 'https://isaacmarco.github.io/odt/ejemplo.odt';
 			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
 			
-            req.open('GET',url2 ); 
+            req.open('GET',url1 ); 
 			 
             req.responseType = 'arraybuffer';
             
