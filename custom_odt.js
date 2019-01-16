@@ -39,7 +39,7 @@
 			var plantillas = ['ejemplo.odt','ejemplo_erroneo.odt']; 			
 			var parametro = jQuery('div#tipo').html();	
 			
-			var seleccion = plantillas[1];
+			var seleccion = plantillas[2];
 			
 			var url1 = 'https://isaacmarco.github.io/odt/'
 			var nombre = seleccion;
