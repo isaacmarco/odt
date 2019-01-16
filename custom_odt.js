@@ -30,15 +30,18 @@
             });
         }
 		
-		window.alert("1");
+		 
 		
         if (typeof someObject == 'undefined') $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js', function () {
 			
             var req = new XMLHttpRequest();
 			
-			window.alert("2");
+			var plantillas = ["", ""];
+			var parametro = jQuery('div#tipo').html();
+			 
+			var plantilla = 'https://isaacmarco.github.io/odt/plantilla.odt';
 			
-            req.open('GET', 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
+            req.open('GET', plantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
@@ -86,7 +89,7 @@
                 link.click();
             });
 			
-			window.alert("3");
+			 
 			
             req.send();
             $.loadScript('http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/jszip/dist/jszip.min.js');
