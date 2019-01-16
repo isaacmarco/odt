@@ -36,10 +36,11 @@
 			
             var req = new XMLHttpRequest();
 			
-			var url1 = 'https://isaacmarco.github.io/odt/ejemplo.odt';
+			var url1 = 'https://isaacmarco.github.io/odt/'
+			var nombre = 'ejemplo.odt';
 			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
 			
-            req.open('GET',url1 ); 
+            req.open('GET',url1 + nombre); 
 			 
             req.responseType = 'arraybuffer';
             
