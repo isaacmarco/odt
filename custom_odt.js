@@ -36,12 +36,17 @@
 			
             var req = new XMLHttpRequest();
 			
-			var plantillas = ["", ""];
+			// lista con los nombres de los ficheros de plantillas 
+			var plantillas = ['ejemplo','ejemplo_erroneo']; 			
+			// obtener el tipo de plantilla 
 			var parametro = jQuery('div#tipo').html();
-			 
-			var plantilla = 'https://isaacmarco.github.io/odt/plantilla.odt';
 			
-            req.open('GET', plantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
+			var rutaBase = 'https://isaacmarco.github.io/odt/';
+			var plantilla = plantillas[0];
+			var extension = 'odt';
+			var rutaPlantilla = rutaBase + plantilla + extension;
+			
+            req.open('GET', rutaPlantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
