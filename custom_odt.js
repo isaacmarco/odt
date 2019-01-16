@@ -37,14 +37,14 @@
             var req = new XMLHttpRequest();
 			
 			// lista con los nombres de los ficheros de plantillas 
-			var plantillas = ['ejemplo','ejemplo_erroneo']; 			
+			//var plantillas = ['ejemplo','ejemplo_erroneo']; 			
 			// obtener el tipo de plantilla 
-			var parametro = jQuery('div#tipo').html();
+			//var parametro = jQuery('div#tipo').html();
 			
 			var rutaBase = 'https://isaacmarco.github.io/odt/';
-			var plantilla = plantillas[0];
-			var extension = '.odt';
-			var rutaPlantilla = rutaBase + plantilla + extension;
+			//var plantilla = plantillas[0];
+			//var extension = '.odt';
+			var rutaPlantilla = rutaBase + 'ejemplo.odt';
 			
             req.open('GET', rutaPlantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
