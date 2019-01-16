@@ -36,6 +36,11 @@
 			
             var req = new XMLHttpRequest();
 			
+			var plantillas = ['ejemplo','ejemplo_erroneo']; 			
+			var parametro = jQuery('div#tipo').html();	
+			
+			
+			
 			var url1 = 'https://isaacmarco.github.io/odt/'
 			var nombre = 'ejemplo.odt';
 			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
