@@ -44,7 +44,7 @@
 			//var rutaBase = '';
 			//var plantilla = plantillas[0];
 			//var extension = '.odt';
-			var rutaPlantilla = https://isaacmarco.github.io/odt/ejemplo.odt';
+			var rutaPlantilla = 'https://isaacmarco.github.io/odt/ejemplo.odt';
 			
             req.open('GET', rutaPlantilla); // 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt');
             req.responseType = 'arraybuffer';
