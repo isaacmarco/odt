@@ -39,7 +39,7 @@
 			// lista con los nombres de los ficheros de plantillas 
 			var plantillas = ['ejemplo','ejemplo_erroneo']; 			
 			// obtener el tipo de plantilla 
-			var parametro = jQuery('div#tipo').html();
+			//var parametro = jQuery('div#tipo').html();
 			
 			var rutaBase = 'https://isaacmarco.github.io/odt/';
 			var plantilla = plantillas[0];
