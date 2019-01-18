@@ -36,18 +36,10 @@
 			
             var req = new XMLHttpRequest();
 			
+			// obtener el nombre de la plantilla desde el html 
+			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
 			
-			var tipo = jQuery('div#tipo').html();	
-			
-			/*
-			var plantillas = ['ejemplo.odt','ejemplo_erroneo.odt']; 			
-			var seleccion = plantillas[1];			
-			var url1 = 'https://isaacmarco.github.io/odt/'
-			var nombre = seleccion;
-			var url2 = 'http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/odt/ejemplo.odt';
-			*/
-			
-            req.open('GET','https://isaacmarco.github.io/odt/' + tipo + '.odt'); //'url1 + nombre); 
+            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 
 			 
             req.responseType = 'arraybuffer';
             
