@@ -1,0 +1,60 @@
+/*
+	devuelve letra aleatoria
+*/
+function dame_letra(){
+	$letras = array("A", "B", "C", "D", "E", "F", "G", 
+	"H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
+	"R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+	$longitud = count($letras) - 1;
+	$seleccion = rand(0, $longitud);
+	return $letras[$seleccion];
+}
+add_shortcode('dame_letra', 'dame_letra')
+
+
+
+
+
+/*
+	devuelve letra aleatoria
+*/
+
+function letra_aleatoria(){
+	$letras = array("A", "B", "C", "D", "E", "F", "G", 
+	"H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
+	"R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+	$longitud = count($letras) - 1;
+	$seleccion = rand(0, $longitud);
+	return $letras[$seleccion];
+}
+
+/*
+	generar tabla html para sopa de letras 
+*/
+
+function crear_sopa_letras(){
+	// crea una sopa de dimensiones por defecto 
+	crear_sopa(20);
+}
+add_shortcode('crear_sopa_letras', 'crear_sopa_letras')
+
+function crear_sopa($dimensiones){
+			
+	echo "<table>\n";
+ 
+	for ($i=0; $i<$dimensiones; $i++){
+		echo "<tr>\n";
+		for ($j=0; $j<$dimensiones; $j++){
+			
+			$celda = "<td class='clase odt para celda'>" . letra_aleatoria() . "</td>\n";
+			echo $celda; 
+		
+		}
+		echo "</tr>\n";
+	}
+	
+	echo "</table>";
+
+}
+add_shortcode('crear_sopa', 'crear_sopa')
+
