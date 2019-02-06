@@ -1,4 +1,46 @@
 /*
+	devuelve un array con cadenas al pasarle 
+	una cadena con elementos separados por ;
+*/
+function partir_cadena($cadena){
+	return explode(";", $cadena);
+}
+
+/*
+	devuelve una respuesta concreta por su indice, 
+	pasando como parametros una cadena con todas las 
+	respuestas separadas por ';' y un indice.	
+*/
+function dame_respuesta($respuestas, $indice){
+	return partir_cadena($respuestas)[$indice];
+}
+
+/*
+	uso, donde [X] es el campo con las respuestas separadas por ; y
+	[Y] el indice:
+	[ muestra_respuesta respuestas=[X] indice=[Y] ]
+	
+*/
+function muestra_respuesta($parametros){	
+	$respuestas = $parametros["respuestas"];
+	$indice = $parametros["indice"];
+	return dame_respuesta($respuestas, $indice);
+}
+add_shortcode('muestra_respuesta', 'muestra_respuesta')
+
+/*
+	misma funcion, pero accedendio al array de parametros 
+	por un indice 
+*/
+function muestra_respuesta_array($parametros){
+	$respuestas = $parametros[0];
+	$indice = $parametros[1];
+	return dame_respuesta($respuestas, $indice);
+}
+add_shortcode('muestra_respuesta_array', 'muestra_respuesta_array')
+
+
+/*
 	devuelve letra aleatoria
 */
 function dame_letra(){
@@ -34,27 +76,36 @@ function letra_aleatoria(){
 
 function crear_sopa_letras(){
 	// crea una sopa de dimensiones por defecto 
-	crear_sopa(20);
+	return crear_sopa_html(20);
 }
-add_shortcode('crear_sopa_letras', 'crear_sopa_letras')
+add_shortcode('sopa_letras', 'sopa_letras')
 
-function crear_sopa($dimensiones){
-			
-	echo "<table>\n";
+function crear_sopa_html($dimensiones){
+	
+	$html = "<!-- sopa de letras -->\n";
+	
+	
+	// echo "<table>\n";
+	$html .= "<table>\n";
  
 	for ($i=0; $i<$dimensiones; $i++){
-		echo "<tr>\n";
+		//echo "<tr>\n";
+		$html .= "<tr>\n";
 		for ($j=0; $j<$dimensiones; $j++){
 			
 			$celda = "<td class='clase odt para celda'>" . letra_aleatoria() . "</td>\n";
-			echo $celda; 
+			//echo $celda; 
+			$html .= $celda;
 		
 		}
-		echo "</tr>\n";
+		//echo "</tr>\n";
+		$html .= "</tr>\n";
 	}
 	
-	echo "</table>";
+	//echo "</table>";
+	$html .= "</table>";
 
+	return $html;
 }
 add_shortcode('crear_sopa', 'crear_sopa')
 
