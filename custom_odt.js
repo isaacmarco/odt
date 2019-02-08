@@ -39,6 +39,9 @@
 			// obtener el nombre de la plantilla desde el html 
 			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
 			
+			// obtener el nombre del fichero a descargar 
+			var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();
+			
             req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 
 			 
             req.responseType = 'arraybuffer';
