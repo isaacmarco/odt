@@ -1,0 +1,12 @@
+<office:automatic-styles>
+<style:style style:name="P1" style:parent-style-name="Standard" style:family="paragraph">
+<style:paragraph-properties style:justify-single-word="false" fo:text-align="center"/>
+<style:text-properties style:font-weight-complex="bold" style:font-size-complex="15pt" style:font-weight-asian="bold" style:font-size-asian="15pt" fo:font-weight="bold" fo:font-size="15pt"/>
+</style:style>
+<style:style style:name="P2" style:parent-style-name="Standard" style:family="paragraph">
+<style:text-properties fo:background-color="#ffff00" style:text-underline-style="none"/>
+</style:style>
+<style:style style:name="P3" style:parent-style-name="Standard" style:family="paragraph">
+<style:text-properties style:font-style-complex="italic" style:font-style-asian="italic" fo:font-style="italic"/>
+</style:style>
+</office:automatic-styles>
