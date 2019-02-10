@@ -92,7 +92,9 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
+	console.log('version codigo custom-odt 41');
 	
+		
     jQuery("#convert-odt").click(function () {		
         jQuery.loadScript = function (url, callback) {
             jQuery.ajax({
@@ -116,7 +118,7 @@ jQuery('document').ready(function () {
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {				
-				alert('version codigo custom-odt 40');					
+					
 				
 				// fichero de la plantilla descargada
 				var fichero = req.response;          
@@ -128,7 +130,7 @@ jQuery('document').ready(function () {
 				// por todo el codigo XML de la vista formidable.
 
 				// primero obtenemos el contenido de la vista del formidable 
-				var xml_vista_formidable = jQuery('div#xml-vista-formidable').html();		
+				var xml_vista_formidable = jQuery('div#xml-vista-formidable').text();		
 				console.log(xml_vista_formidable);
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
 				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
