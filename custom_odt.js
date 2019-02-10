@@ -49,7 +49,7 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('11');				
+				alert('12');				
 							
 				 
                 try {
@@ -58,6 +58,8 @@
 					// tomar el texto comprendido dentro de taba1 
 					
 					console.log(odtdoc.getHTMLUnsafe());
+					
+					return;
 					
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;					 
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
