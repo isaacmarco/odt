@@ -106,7 +106,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 61');
+	console.log('version codigo custom-odt 65');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -149,7 +149,7 @@ jQuery('document').ready(function () {
 				console.log(xml_vista_formidable);
 				
 				// sustituir el banner
-				var src = "http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png";
+				var src = '"http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png"';
 				xml_plantilla = xml_plantilla.replace(xml_banner_tag, src);
 				
 				
