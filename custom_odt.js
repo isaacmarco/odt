@@ -78,7 +78,7 @@
                 var odt = odtdoc.getODT();
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
 				
-				link.appendChild(document.createTextNode('v2'));
+			 
 				 
 				// crear link de descarga 
                 var link = document.createElement('a');
