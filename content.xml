@@ -28,9 +28,9 @@
 				<text:sequence-decl text:display-outline-level="0" text:name="Text"/>
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
 			</text:sequence-decls>
-			<text:p text:style-name="Standard">TEXTO 1</text:p>
-			<text:p text:style-name="Standard">TEXTO 2</text:p>
-			<text:p text:style-name="Standard">TEXTO 3</text:p>
+			<text:p text:style-name="P1">TEXTO 1</text:p>
+			<text:p text:style-name="P2">TEXTO 2</text:p>
+			<text:p text:style-name="P3">TEXTO 3</text:p>
 		</office:text>
 	</office:body>
 </office:document-content>
