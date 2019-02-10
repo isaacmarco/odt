@@ -49,7 +49,7 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('12');				
+				alert('13');				
 							
 				 
                 try {
@@ -59,7 +59,7 @@
 					
 					console.log(odtdoc.getHTMLUnsafe());
 					
-					return;
+					 
 					
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;					 
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
