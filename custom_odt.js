@@ -58,7 +58,7 @@
 					
 					// tomar el texto comprendido dentro de taba1 
 				
-					var rx = /<contenido><\/contenido>/ig;
+					var rx = /<documento>/ig;
 					var texto = $('#contenido').val();
 					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(rx, texto));
 					
