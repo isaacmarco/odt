@@ -53,7 +53,7 @@
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");
 					
-					alert(contenido);
+					 
 					
                     contenido = contenido.replace(/&/g, "");
                     contenido = contenido.replace(/<b>/g, "<span class=\"T13\">");
@@ -82,7 +82,7 @@
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 link.download = jQuery('div#nombre-odt').html();
-                link.appendChild(document.createTextNode('NOTA VERSION'));
+                link.appendChild(document.createTextNode('NOTA VERSION3'));
                 var downloadArea = document.getElementById('download-area');
                 downloadArea.innerHTML = '';
                 downloadArea.appendChild(link);
