@@ -1,0 +1,1 @@
+<text:p text:style-name="Text_body">TEXTO DE PRUEBA EN FORMATO XML</text:p>
