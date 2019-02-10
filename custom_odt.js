@@ -92,7 +92,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 51');
+	console.log('version codigo custom-odt 52');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
