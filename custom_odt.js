@@ -49,7 +49,7 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('22');				
+				alert('23');				
 							
 				 
 					
@@ -58,7 +58,7 @@
 					
 					// tomar el texto comprendido dentro de taba1 
 				
-					var rx = /<documento>/ig;
+					var rx = /<documento><\/documento>/ig;
 					var texto = $('#contenido').val();
 					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(rx, texto));
 					
