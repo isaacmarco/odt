@@ -92,8 +92,10 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 42');
-	
+	console.log('version codigo custom-odt 43');
+	console.log(jQuery('div#xml-vista-formidable').val() );
+	console.log(jQuery('div#xml-vista-formidable').html() );
+	console.log(jQuery('div#xml-vista-formidable').text() );
 		
     jQuery("#convert-odt").click(function () {		
         jQuery.loadScript = function (url, callback) {
