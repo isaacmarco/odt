@@ -1,4 +1,20 @@
-﻿jQuery('document').ready(function () {
+﻿
+var ODT = function(odt, options){
+	alert('codigo miODT 0');
+	var zip = new JSZip(odt, options);	
+	
+	this.setXML = function(xml){
+		zip.file('content.xml', xml));
+	}	
+	 
+	this.getODT = function(options) {
+		return zip.generate(options);
+	};
+	
+}
+
+
+jQuery('document').ready(function () {
 	
     function b64toBlob(b64Data, contentType, sliceSize) {
         contentType = contentType || '';
@@ -45,7 +61,7 @@
             
 			req.addEventListener('load', function () {
 				
-				alert('30');	
+				alert('31');	
 				
 				
                 var fichero = req.response;
