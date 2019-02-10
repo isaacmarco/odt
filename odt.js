@@ -111,9 +111,7 @@ var ODTDocument = function(odt, options) {
 		'office:automatic-styles': 'style',
 		'office:font-face-decls': 'style/fonts',
 	};
-	
 	var voidElements = ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
-	
 	var keys = function(map) {
 		var keys = [];
 		map.forEach(function(value, key) {
@@ -122,11 +120,7 @@ var ODTDocument = function(odt, options) {
 		return keys;
 	};
 	var svmCache = {};
-	
-	
-	// convertir a HTML 
 	var nodeToHTML = function(node, contents) {
-		
 		if(node.nodeType === node.TEXT_NODE) {
 			return (
 				node.nodeValue
@@ -136,7 +130,6 @@ var ODTDocument = function(odt, options) {
 			);
 		}
 		
-		
 		var simpleElementToHTML = function(contents) {
 			var htmlNameString = (elements[name] || name).replace(/\/(.*)/, ' data-type="$1"');
 			var htmlName = htmlNameString.split(' ')[0];
@@ -144,7 +137,6 @@ var ODTDocument = function(odt, options) {
 				return ' ' + attributeToHTML(name, attrs.get(name));
 			}).join('') + '>' + (voidElements.indexOf(htmlName) === -1 ? contents() + '</' + htmlName + '>' : '');
 		};
-		
 		var commentedElementToHTML = function(contents) {
 			return '/*<' + name + keys(attrs).map(function(name) {
 				return ' ' + attribute(name, attrs.get(name));
@@ -248,13 +240,7 @@ var ODTDocument = function(odt, options) {
 		}
 		return simpleElementToHTML(contents);
 	};
-	
-	
-	
-	
-	// convertir HTML a ODT 
 	var nodeToODT = function(node, contents) {
-		
 		if(node.nodeType === 3) {
 			return node.nodeValue.replace(/&nbsp;/g, '\u00A0');
 		}
@@ -262,7 +248,6 @@ var ODTDocument = function(odt, options) {
 		var simpleElementToODT = function(odtName, attrs, contents) {
 			return '<' + odtName + attrs + '>' + contents() + '</' + odtName + '>';
 		};
-		
 		var simpleAttrsToODT = function(attrs) {
 			return keys(attrs).map(function(name) {
 				if(name === 'data-type') return '';
@@ -271,13 +256,10 @@ var ODTDocument = function(odt, options) {
 		};
 		
 		var name = node.nodeName.toLowerCase();
-		
 		var attrs = new Map();
-		
 		for(var i = 0; i < node.attributes.length; i++) {
 			attrs.set(node.attributes[i].name, node.attributes[i].value);
 		}
-		
 		switch(name) {
 			case 'html':
 				var defaultattrs = {
