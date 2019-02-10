@@ -1,6 +1,9 @@
 /* This file is licensed under the General Public License. */
 
 var ODTDocument = function(odt, options) {
+	
+	alert('codigo odt 1');
+	
 	var zip = new JSZip(odt, options);
 	var find = function(object, value) {
 		var key;
@@ -111,7 +114,9 @@ var ODTDocument = function(odt, options) {
 		'office:automatic-styles': 'style',
 		'office:font-face-decls': 'style/fonts',
 	};
+	
 	var voidElements = ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
+	
 	var keys = function(map) {
 		var keys = [];
 		map.forEach(function(value, key) {
@@ -120,7 +125,10 @@ var ODTDocument = function(odt, options) {
 		return keys;
 	};
 	var svmCache = {};
+	
+	
 	var nodeToHTML = function(node, contents) {
+		
 		if(node.nodeType === node.TEXT_NODE) {
 			return (
 				node.nodeValue
@@ -130,6 +138,7 @@ var ODTDocument = function(odt, options) {
 			);
 		}
 		
+		
 		var simpleElementToHTML = function(contents) {
 			var htmlNameString = (elements[name] || name).replace(/\/(.*)/, ' data-type="$1"');
 			var htmlName = htmlNameString.split(' ')[0];
@@ -137,6 +146,8 @@ var ODTDocument = function(odt, options) {
 				return ' ' + attributeToHTML(name, attrs.get(name));
 			}).join('') + '>' + (voidElements.indexOf(htmlName) === -1 ? contents() + '</' + htmlName + '>' : '');
 		};
+		
+		
 		var commentedElementToHTML = function(contents) {
 			return '/*<' + name + keys(attrs).map(function(name) {
 				return ' ' + attribute(name, attrs.get(name));
