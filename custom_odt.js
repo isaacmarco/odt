@@ -52,7 +52,7 @@
                 var odtdoc = new ODTDocument(empty);
 				
 			 
-				/*
+			 
                 try {
 					
 					// recoger todo el html dentro de la tabla1
@@ -82,11 +82,8 @@
                     alert("No se pudo generar el documento odt.");
                     throw e;
                 }
-				*/
-				// OJO ESTE CAMBIO ES MIO 				
-				var html = $('#contenido').val();
-				alert(html);
-				odtdoc.setHTMLUnsafe(html);
+				 
+			 
 				
                 var odt = odtdoc.getODT();
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
