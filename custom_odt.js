@@ -49,9 +49,9 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('4');				
+				alert('5');				
 				
-				console.log( odtdoc.getODT() );
+				console.log( odtdoc.getHTML() );
 				
 				/*
                 try {
