@@ -45,6 +45,9 @@
             
 			req.addEventListener('load', function () {
 				
+				alert('30');	
+				
+				
                 var fichero = req.response;
                 //var odtdoc = new ODTDocument(fichero);
 				var odtdoc = new ODT(fichero);
@@ -53,7 +56,7 @@
 					
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
 				
-				alert('25');				
+							
 							
 				
 					/*
