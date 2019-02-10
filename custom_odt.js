@@ -52,7 +52,7 @@
                 var odtdoc = new ODTDocument(empty);
 				
 			 
-			 
+				/*
                 try {
 					
 					// recoger todo el html dentro de la tabla1
@@ -77,11 +77,16 @@
 					
 					// volcar el html al conversor 
                     odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
+					
                 } catch (e) {
                     alert("No se pudo generar el documento odt.");
                     throw e;
                 }
-				 
+				*/
+				
+				// OJO ESTE CAMBIO ES MIO 
+				var html = $('#contenido').val();
+				odtdoc.setHTMLUnsafe(html);
 				
                 var odt = odtdoc.getODT();
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
