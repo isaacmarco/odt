@@ -49,7 +49,7 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('15');				
+				alert('16');				
 							
 				 
 					
@@ -57,11 +57,11 @@
 					
 					
 					// tomar el texto comprendido dentro de taba1 
+					var rx = /<contenido>.*<\/contenido>/ig;	
+					var texto = $('#contenido').val();
+					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(rx, texto));
 					
-				
-					
-					 
-					
+					/*
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;					 
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
                     contenido = contenido.replace(/&/g, "");
@@ -78,9 +78,10 @@
                     contenido = contenido.replace(/<\/li>/g, "<\/p>");
                     contenido = contenido.replace(/<p> <\/p>/g, "");
 					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
+					*/
 					 
 					console.log(odtdoc.getHTMLUnsafe());
-					alert( odtdoc.getHTMLUnsafe() );
+					//alert( odtdoc.getHTMLUnsafe() );
 					 
 					
                 } catch (e) {
