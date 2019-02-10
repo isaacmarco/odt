@@ -49,17 +49,13 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('8');				
+				alert('9');				
 							
 				 
                 try {
 					// tomar el texto comprendido dentro de taba1 
-                    var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;
-					
- 					var contenido = $('#contenido').val();
-					
-					
 					/*
+                    var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;					 
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
                     contenido = contenido.replace(/&/g, "");
                     contenido = contenido.replace(/<b>/g, "<span class=\"T13\">");
@@ -74,12 +70,14 @@
                     contenido = contenido.replace(/<li>/g, "<p>    • ");
                     contenido = contenido.replace(/<\/li>/g, "<\/p>");
                     contenido = contenido.replace(/<p> <\/p>/g, "");
+					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
 					*/
-				 
-				 
-                    odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
 					
-					console.log( odtdoc.getHTML() );
+					var contenido = $('#contenido').val();
+					odtdoc.setHTMLUnsafe(contenido);
+                   
+					
+					 
 					
                 } catch (e) {
                     alert("No se pudo generar el documento odt.");
