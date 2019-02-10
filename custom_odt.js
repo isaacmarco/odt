@@ -49,15 +49,16 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('5');				
-				
-				console.log( odtdoc.getHTML() );
-				
-				/*
+				alert('6');				
+							
+				 
                 try {
 					// tomar el texto comprendido dentro de taba1 
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;
-										
+					
+ 					var contenido = $('#contenido').val();
+					
+					/*
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
                     contenido = contenido.replace(/&/g, "");
                     contenido = contenido.replace(/<b>/g, "<span class=\"T13\">");
@@ -72,14 +73,18 @@
                     contenido = contenido.replace(/<li>/g, "<p>    • ");
                     contenido = contenido.replace(/<\/li>/g, "<\/p>");
                     contenido = contenido.replace(/<p> <\/p>/g, "");
-                    
+					*/
+				 
+				 
                     odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
+					
+					console.log( odtdoc.getHTML() );
 					
                 } catch (e) {
                     alert("No se pudo generar el documento odt.");
                     throw e;
                 }
-				*/
+			 
 				
                 var odt = odtdoc.getODT();
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
