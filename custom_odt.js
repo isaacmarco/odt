@@ -83,9 +83,9 @@
                     throw e;
                 }
 				*/
-				
-				// OJO ESTE CAMBIO ES MIO 
+				// OJO ESTE CAMBIO ES MIO 				
 				var html = $('#contenido').val();
+				alert(html);
 				odtdoc.setHTMLUnsafe(html);
 				
                 var odt = odtdoc.getODT();
