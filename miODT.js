@@ -1,7 +1,7 @@
 /* This file is licensed under the General Public License. */
 
 var ODT = function(odt, options){
-	alert('codigo miODT 0');
+	//alert('codigo miODT 0');
 	var zip = new JSZip(odt, options);	
 	
 	this.setXML = function(xml){

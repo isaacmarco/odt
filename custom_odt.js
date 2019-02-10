@@ -88,7 +88,7 @@ jQuery('document').ready(function () {
             
 			req.addEventListener('load', function () {
 				
-				alert('32');	
+				alert('33');	
 				
 				
                 var fichero = req.response;
