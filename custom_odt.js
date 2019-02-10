@@ -78,12 +78,13 @@
                 var odt = odtdoc.getODT();
                 var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
 				
+				link.appendChild(document.createTextNode('v2'));
+				 
 				// crear link de descarga 
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 link.download = jQuery('div#nombre-odt').html();
-                link.appendChild(
-					document.createTextNode('NOTA VERSION 2'));
+                link.appendChild(document.createTextNode('NOTA VERSION 2'));
                 var downloadArea = document.getElementById('download-area');
                 downloadArea.innerHTML = '';
                 downloadArea.appendChild(link);
