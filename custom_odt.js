@@ -49,7 +49,7 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('23');				
+				alert('24');				
 							
 				 
 					
@@ -88,6 +88,7 @@
                 } catch (e) {
                     alert("No se pudo generar el documento odt.");
 					console.log(odtdoc.getHTMLUnsafe());
+					console.log(e);
                     throw e;
                 }
 			 
