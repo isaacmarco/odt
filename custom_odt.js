@@ -106,7 +106,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 60');
+	console.log('version codigo custom-odt 61');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -148,12 +148,16 @@ jQuery('document').ready(function () {
 				var xml_vista_formidable = jQuery('#xml-vista-formidable').val();		
 				console.log(xml_vista_formidable);
 				
-				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
-				var xml_salida0 = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
-				
-				// sustituimos el tag banner por la url real de la imagen 
+				// sustituir el banner
 				var src = "http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png";
-				xml_salida = xml_salida0.replace(xml_banner_tag, src);
+				xml_plantilla = xml_plantilla.replace(xml_banner_tag, src);
+				
+				
+				
+				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
+				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
+				
+			
 				
 				// establecemos el content.xml y lo comprimirmos en el odt 
 				odtdoc.setXML(xml_salida);
