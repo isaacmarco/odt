@@ -37,11 +37,9 @@
             var req = new XMLHttpRequest();
 			
 			// obtener el nombre de la plantilla desde el html 
-			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
-			
+			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();					
 			// obtener el nombre del fichero a descargar 
-			var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();
-			
+			var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();			
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
@@ -52,9 +50,6 @@
                 try {
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");
-					
-					 
-					
                     contenido = contenido.replace(/&/g, "");
                     contenido = contenido.replace(/<b>/g, "<span class=\"T13\">");
                     contenido = contenido.replace(/<\/b>/g, "<\/span>");
@@ -82,11 +77,11 @@
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 link.download = jQuery('div#nombre-odt').html();
-                link.appendChild(document.createTextNode('NOTA VERSION3'));
-				/*
+                link.appendChild(
+					document.createTextNode('Haga clic aqu\u00ED si su descarga no se inici\u00F3 autom\u00E1ticamente'));
                 var downloadArea = document.getElementById('download-area');
                 downloadArea.innerHTML = '';
-                downloadArea.appendChild(link);*/
+                downloadArea.appendChild(link);
 				
 				// realizar descarga automaticamente
                 link.click();
