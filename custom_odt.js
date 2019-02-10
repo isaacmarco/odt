@@ -49,16 +49,17 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('13');				
+				alert('14');				
 							
-				 
+				 	console.log(odtdoc.getHTMLUnsafe());
+					alert( odtdoc.getHTMLUnsafe() );
+					
                 try {
 					
 					
 					// tomar el texto comprendido dentro de taba1 
 					
-					//console.log(odtdoc.getHTMLUnsafe());
-					alert( odtdoc.getHTMLUnsafe() );
+				
 					
 					 
 					
