@@ -44,6 +44,10 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 		<style:style style:name="Tabla1.A1" style:family="table-cell">
 			<style:table-cell-properties fo:padding="0.097cm" fo:border="0.002cm solid #000000"/>
 		</style:style>
+		
+		<style:style style:name="banner" style:family="graphic" style:parent-style-name="Graphics">
+			<style:graphic-properties style:run-through="foreground" style:wrap="run-through" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" style:mirror="none" fo:clip="rect(0cm, 0cm, 0cm, 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" draw:gamma="100%" draw:color-inversion="false" draw:image-opacity="100%" draw:color-mode="standard"/>
+		</style:style>
 	</office:automatic-styles>
 	<!-- fin de los estilos -->
 	
@@ -59,6 +63,11 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>			
 			</text:sequence-decls>
 		
+		<!-- banner -->
+		<draw:frame draw:style-name="banner" draw:name="banner" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
+			<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
+		</draw:frame>
+		<!-- fin del banner -->
 		
 		
 		<!-- todo el documento ODT -->
@@ -73,6 +82,12 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 	
 	
 </office:document-content>
+`;
+
+var xml_banner = `
+<draw:frame draw:style-name="banner" draw:name="banner" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
+	<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
+</draw:frame>
 `;
 
 var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
@@ -92,7 +107,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 52');
+	console.log('version codigo custom-odt 55');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		

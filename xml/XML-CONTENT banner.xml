@@ -1,0 +1,3 @@
+<draw:frame draw:style-name="fr1" draw:name="gráficos1" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
+	<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
+</draw:frame>
