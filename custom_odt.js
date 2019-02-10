@@ -83,9 +83,10 @@
                 link.href = URL.createObjectURL(blob);
                 link.download = jQuery('div#nombre-odt').html();
                 link.appendChild(document.createTextNode('NOTA VERSION3'));
+				/*
                 var downloadArea = document.getElementById('download-area');
                 downloadArea.innerHTML = '';
-                downloadArea.appendChild(link);
+                downloadArea.appendChild(link);*/
 				
 				// realizar descarga automaticamente
                 link.click();
