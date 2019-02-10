@@ -48,10 +48,7 @@
 				
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
-				
-				//alert( odtdoc.getHTMLUnsafe() );
-				var html = $('#contenido').val();
-				odtdoc.setHTMLUnsafe(html);
+							
 				 
 				/*
                 try {
