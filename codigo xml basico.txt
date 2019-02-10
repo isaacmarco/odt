@@ -1,0 +1,8 @@
+			<table:table table:name="Tabla2">
+				<table:table-column/>
+				<table:table-row/>
+					<table:table-cell office:value-type="string">
+						<text:p>hola</text:p>
+					</table:table-cell>
+				</table:table-row>
+			</table:table>
