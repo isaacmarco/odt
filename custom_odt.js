@@ -49,10 +49,9 @@
                 var empty = req.response;
                 var odtdoc = new ODTDocument(empty);
 				
-				alert('14');				
+				alert('15');				
 							
-				 	console.log(odtdoc.getHTMLUnsafe());
-					alert( odtdoc.getHTMLUnsafe() );
+				 
 					
                 try {
 					
@@ -80,7 +79,8 @@
                     contenido = contenido.replace(/<p> <\/p>/g, "");
 					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
 					 
-					
+					console.log(odtdoc.getHTMLUnsafe());
+					alert( odtdoc.getHTMLUnsafe() );
 					 
 					
                 } catch (e) {
