@@ -71,11 +71,22 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 
 var xml_documento_tag = '<documento></documento>';
 
-var xml_documento = `
+var xml_vista_formidable = `
 <text:p text:style-name="Text_body">TEXTO DE PRUEBA EN FORMATO XML</text:p>
 `;
 
 
+var ODT = function(odt, options){	
+	var zip = new JSZip(odt, options);	
+	this.setXML = function(xml){
+		zip.file('content.xml', xml);
+	}		 
+	this.getODT = function(options) {
+		return zip.generate(options);
+	};	
+}
+
+	
 jQuery('document').ready(function () {
 	
     
@@ -106,14 +117,14 @@ jQuery('document').ready(function () {
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {				
-				alert('version codigo custom-odt 36');					
+				alert('version codigo custom-odt 37');					
 				var fichero = req.response;                				
 				var odtdoc = new ODT(fichero);
 				
 				// incrustar aqui el XML de la vista de formidable,
 				// sustituimos en la plantilla el tag <documento></documento>
 				// por todo el codigo XML de la vista formidable 				
-				var xml_salida = xml_plantilla.replace(xml_documento_tag, xml_plantilla);
+				var xml_salida = xml_plantilla.replace(xml_documento_tag, xml_vista_formidable);
 				
 				odtdoc.setXML(xml_salida);
 				var odt = odtdoc.getODT();					
@@ -128,6 +139,9 @@ jQuery('document').ready(function () {
 
     });
 	
+	
+
+
 	
 	// crear link de descarga 
 	function CrearLinkDescarga(blob){		
