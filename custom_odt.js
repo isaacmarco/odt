@@ -63,11 +63,10 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>			
 			</text:sequence-decls>
 		
-		<!-- banner
+		<!-- banner -->
 		<draw:frame draw:style-name="banner" draw:name="banner" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
-			<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
-		</draw:frame>
-		 -->
+			<draw:image xlink:href=<banner/> xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
+		</draw:frame>		
 		<!-- fin del banner -->
 		
 		
@@ -86,13 +85,11 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 </office:document-content>
 `;
 
-var xml_banner = `
-<draw:frame draw:style-name="banner" draw:name="banner" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
-	<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
-</draw:frame>
-`;
+
+
 
 var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
+var xml_banner_tag = '</banner>;
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml en el fichero odt 
@@ -109,7 +106,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 57');
+	console.log('version codigo custom-odt 60');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -152,7 +149,11 @@ jQuery('document').ready(function () {
 				console.log(xml_vista_formidable);
 				
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
-				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
+				var xml_salida0 = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
+				
+				// sustituimos el tag banner por la url real de la imagen 
+				var src = "http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png";
+				xml_salida = xml_salida0.replace(xml_banner_tag, src);
 				
 				// establecemos el content.xml y lo comprimirmos en el odt 
 				odtdoc.setXML(xml_salida);
