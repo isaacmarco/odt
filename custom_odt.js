@@ -32,7 +32,7 @@
 		
         if (typeof someObject == 'undefined') $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js', function () {
 			
-             var req = new XMLHttpRequest();
+            var req = new XMLHttpRequest();
 			
 			// obtener el nombre de la plantilla desde el html 
 			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
@@ -40,29 +40,33 @@
 			// obtener el nombre del fichero a descargar 
 			//var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();
 			
-            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 
-			 
+            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 			 
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
 				
-                var empty = req.response;
-                var odtdoc = new ODTDocument(empty);
-				
-				alert('24');				
-							
-				 
+                var fichero = req.response;
+                //var odtdoc = new ODTDocument(fichero);
+				var odtdoc = new ODT(fichero);
+				odtdoc.setXML('contenido XML');
+				var odt = odtdoc.getODT();
 					
+                var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
+				
+				alert('25');				
+							
+				
+					/*
                 try {
 					
 					
 					// tomar el texto comprendido dentro de taba1 
-				
+					 
 					var rx = /<documento><\/documento>/ig;
 					var texto = $('#contenido').val();
-					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(rx, texto));
+					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(rx, texto)); 
 					
-					/*
+				 
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;					 
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");					
                     contenido = contenido.replace(/&/g, "");
@@ -78,23 +82,28 @@
                     contenido = contenido.replace(/<li>/g, "<p>    • ");
                     contenido = contenido.replace(/<\/li>/g, "<\/p>");
                     contenido = contenido.replace(/<p> <\/p>/g, "");
-					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));
-					*/
+					odtdoc.setHTMLUnsafe(odtdoc.getHTMLUnsafe().replace(regex, contenido));  
 					 
-					console.log(odtdoc.getHTMLUnsafe());
+					 
+					//console.log(odtdoc.getHTMLUnsafe());
 					//alert( odtdoc.getHTMLUnsafe() );
 					 
 					
                 } catch (e) {
-                    alert("No se pudo generar el documento odt.");
+				 
+                    alert("No se pudo generar el documento odt.");	
+				 
 					console.log(odtdoc.getHTMLUnsafe());
-					console.log(e);
+					console.log(e);  
                     throw e;
-                }
+                } */
 			 
 				
-                var odt = odtdoc.getODT();
-                var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");
+                //var odt = odtdoc.getODT();
+				
+				
+				
+			
 				
 				// crear link de descarga 
                 var link = document.createElement('a');
