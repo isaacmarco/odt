@@ -1,18 +1,4 @@
 ﻿
-var ODT = function(odt, options){
-	alert('codigo miODT 0');
-	var zip = new JSZip(odt, options);	
-	
-	this.setXML = function(xml){
-		zip.file('content.xml', xml));
-	}	
-	 
-	this.getODT = function(options) {
-		return zip.generate(options);
-	};
-	
-}
-
 
 jQuery('document').ready(function () {
 	
@@ -61,7 +47,7 @@ jQuery('document').ready(function () {
             
 			req.addEventListener('load', function () {
 				
-				alert('31');	
+				alert('32');	
 				
 				
                 var fichero = req.response;

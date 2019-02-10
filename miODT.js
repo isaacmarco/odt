@@ -5,7 +5,7 @@ var ODT = function(odt, options){
 	var zip = new JSZip(odt, options);	
 	
 	this.setXML = function(xml){
-		zip.file('content.xml', xml));
+		zip.file('content.xml', xml);
 	}	
 	 
 	this.getODT = function(options) {
