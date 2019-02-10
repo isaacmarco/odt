@@ -1,4 +1,10 @@
-﻿var xml_estilos = `
+﻿/*
+*	programado por Isaac Marco, 2019
+*	isaacmarco@gmail.com
+*
+*/
+
+var xml_estilos = `
 <!-- estilos, se pueden incluir aqui todos los deseados -->
 	<office:automatic-styles>
 		<style:style style:name="Tabla1" style:family="table">
@@ -56,7 +62,7 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 		
 		
 		<!-- todo el documento ODT -->
-			<documento></documento>		
+			<vista-formidable></vista-formidable>		
 		<!-- fin del documento ODT -->
 			
 			
@@ -69,13 +75,10 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 </office:document-content>
 `;
 
-var xml_documento_tag = '<documento></documento>';
+var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
 
-var xml_vista_formidable = `
-<text:p text:style-name="Text_body">TEXTO DE PRUEBA EN FORMATO XML</text:p>
-`;
-
-
+// objeto ODT permite comprimir y descomprimir
+// el content.xml en el fichero odt 
 var ODT = function(odt, options){	
 	var zip = new JSZip(odt, options);	
 	this.setXML = function(xml){
@@ -87,13 +90,10 @@ var ODT = function(odt, options){
 }
 
 	
-jQuery('document').ready(function () {
-	
-    
+jQuery('document').ready(function () {    
 	
 	
-    jQuery("#convert-odt").click(function () {
-		
+    jQuery("#convert-odt").click(function () {		
         jQuery.loadScript = function (url, callback) {
             jQuery.ajax({
                 url: url,
@@ -110,27 +110,37 @@ jQuery('document').ready(function () {
 			// obtener el nombre de la plantilla desde el html 
 			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
 			
-			// obtener el nombre del fichero a descargar 
-			//var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();
+			
 			
             req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 			 
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {				
-				alert('version codigo custom-odt 37');					
-				var fichero = req.response;                				
+				alert('version codigo custom-odt 40');					
+				
+				// fichero de la plantilla descargada
+				var fichero = req.response;          
+				// 	creamos un odt vacio usando la plantilla 
 				var odtdoc = new ODT(fichero);
 				
 				// incrustar aqui el XML de la vista de formidable,
-				// sustituimos en la plantilla el tag <documento></documento>
-				// por todo el codigo XML de la vista formidable 				
-				var xml_salida = xml_plantilla.replace(xml_documento_tag, xml_vista_formidable);
+				// sustituimos en la plantilla el tag <vista-formidable></vista-formidable>
+				// por todo el codigo XML de la vista formidable.
+
+				// primero obtenemos el contenido de la vista del formidable 
+				var xml_vista_formidable = jQuery('div#xml-vista-formidable').html();				
+				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
+				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
 				
+				// establecemos el content.xml y lo comprimirmos en el odt 
 				odtdoc.setXML(xml_salida);
-				var odt = odtdoc.getODT();					
+				// obtenemos el ODT ya comprimido
+				var odt = odtdoc.getODT();	
+				// pasamos el odt a largue binary object
 				var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");				
-				// crear el link 
-				CrearLinkDescarga(blob);								
+				// creamos el link de descarga
+				CrearLinkDescarga(blob);
+				
             });			
 			
             req.send();
@@ -146,7 +156,7 @@ jQuery('document').ready(function () {
 	// crear link de descarga 
 	function CrearLinkDescarga(blob){		
 		var link = document.createElement('a');
-		link.href = URL.createObjectURL(blob);
+		link.href = URL.createObjectURL(blob);	
 		link.download = jQuery('div#nombre-odt').html();
 		link.appendChild(
 			document.createTextNode('Haga clic aqu\u00ED si su descarga no se inici\u00F3 autom\u00E1ticamente')
@@ -156,12 +166,7 @@ jQuery('document').ready(function () {
 		downloadArea.appendChild(link);				
 		// realizar descarga automaticamente
 		link.click();
-	}	
-	
-	
-	// TODO: meter codigo zip aqui desde miODT.js
-	// --
-	
+	}		
 	
 	// convertie a largue binary object
 	function b64toBlob(b64Data, contentType, sliceSize) {
