@@ -29,10 +29,6 @@
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>			
 			</text:sequence-decls>
 			
-			<contenido>
-			</contenido>
-			
-			<!--
 			<table:table table:name="Tabla1" table:style-name="Tabla1">
 				<table:table-column table:style-name="Tabla1.A"/>
 				<table:table-row>
@@ -41,7 +37,6 @@
 					</table:table-cell>
 				</table:table-row>
 			</table:table>
-			-->
 			
 			<text:p text:style-name="Standard"/>
 		</office:text>

@@ -2,7 +2,7 @@
 
 var ODTDocument = function(odt, options) {
 	
-	//alert('codigo odt 1');
+	alert('codigo odt 2');
 	
 	var zip = new JSZip(odt, options);
 	var find = function(object, value) {
