@@ -63,11 +63,13 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>			
 			</text:sequence-decls>
 		
-		<!-- banner -->
+		<!-- banner
 		<draw:frame draw:style-name="banner" draw:name="banner" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
 			<draw:image xlink:href="https://isaacmarco.github.io/odt/banners/ESO-1/LENGUA.png" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
 		</draw:frame>
+		 -->
 		<!-- fin del banner -->
+		
 		
 		
 		<!-- todo el documento ODT -->
@@ -107,7 +109,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 55');
+	console.log('version codigo custom-odt 57');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
