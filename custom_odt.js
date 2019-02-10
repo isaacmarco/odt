@@ -89,7 +89,7 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 
 
 var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
-var xml_banner_tag = '</banner>';
+var xml_banner_tag = '<banner/>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml en el fichero odt 
