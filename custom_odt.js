@@ -52,6 +52,9 @@
                 try {
                     var regex = /<table table:name=\"Tabla1\" class=\"Tabla1\">.*<\/table>/ig;
                     var contenido = $('#contenido').val().replace(/&feature=youtube.be/g, "");
+					
+					alert(contenido);
+					
                     contenido = contenido.replace(/&/g, "");
                     contenido = contenido.replace(/<b>/g, "<span class=\"T13\">");
                     contenido = contenido.replace(/<\/b>/g, "<\/span>");
