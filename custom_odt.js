@@ -39,8 +39,9 @@
 			// obtener el nombre de la plantilla desde el html 
 			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();					
 			// obtener el nombre del fichero a descargar 
-			var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();			
-            req.responseType = 'arraybuffer';
+			//var nombreFicheroDescarga = jQuery('div#nombre-fichero').html();			
+            
+			req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {
 				
