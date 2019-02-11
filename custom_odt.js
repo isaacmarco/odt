@@ -104,7 +104,7 @@ var ODT = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 4');
+	console.log('version codigo custom-odt 5');
 	//console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -146,7 +146,7 @@ jQuery('document').ready(function () {
 				var xml_vista_formidable = jQuery('#xml-vista-formidable').val();		
 				 
 			
-				console.log ( jQuery('#xml-vista-formidable').val() );
+				//console.log ( jQuery('#xml-vista-formidable').val() );
 				 
 				// limpiamos las etiquetas </br> y </p> que puede introducir el editor de wordpress
 				// en la vista formidable 
