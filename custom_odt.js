@@ -2,23 +2,23 @@
 *	Programado por Isaac Marco, 2019
 *	isaacmarco@gmail.com
 *	
-*	El proposito de este script es escribir el content.xml en 
-*	formato XML-odt de OpenOffice. El script utiliza un odt con un 
-*	content vacio, en el que se inscribe un cuerpo xml_plantilla ya 
-*	prestablecido. Este cuerpo ya contiene algunos estilos, y cuenta
-*	con etiquetas especiales para poder insertar en ellas codigo XML 
-*	adicional de cuerpo y estilos. 
-*
+*	El proposito de este script es escribir en el content.xml de un 
+*	fichero odt de OpenOffice todo el XML que genere una vista del 
+*	wordpress Formidable. El script tambien escribe el styles.xml, 
+*	utilizando para ello una definicion del fichero completa incluida
+* 	en este script. La definicion de este styles.xml incluye la 
+*	cabecera.
+*	
+*	La cabecera se recoge desde el div id = "cabecera-vista-formidable" 
+*	en la vista de formidable, y se inserta en el style.xml incluido 
+*	en este script reemplazando el contenido del tag <cabecera/>.
+*	
+*	El cuerpo del content.xml se genera todo desde el div id = "xml-vista-formidable",
+*	generando todo el content.xml completo. Por lo tanto, el XML que escriba
+*	en la vista formidable debe incluir todo el contenido del content.xml 
+*	del fichero odt que ha utilizado como plantilla. 
 */
 
-// XML completo de una plantilla vacia, pero que incluye el estilo de cabecera y su imagen,
-// asi como un espacio reservado para el contenido y estilos propios en XML generados por la vista
-// del formidable para cada actividad especificamente. El XML de la vista se inserta 
-// automaticamente en los tags <estilos-vista-formidable/> y <vista-formidable>.
-// Puede incluir en esta plantilla los estilos comunes que crea necesario, pero utilice para 
-// ellos nombres que no entren en conflicto con los nombres de estilo usados normalmente
-// por OpenOffice. Por ejemplo, no declare un estilo comun con el nombre "P1", use "negrita".
-// La imagen del banner se inserta utilizando el tag <banner/>.
 
 
 var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
@@ -173,11 +173,10 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 // variables para identificar cada tag en la plantilla XML 
 // anteriormente definida
 var xml_cabecera_tag = '<cabecera/>';
-var xml_estilos_vista_formidable_tag = '<estilos-vista-formidable/>';
 
 
 // objeto ODT permite comprimir y descomprimir
-// el content.xml en el fichero odt 
+// el content.xml y el styles.xml en el fichero odt 
 var ODTContent = function(odt, options){	
 	var zip = new JSZip(odt, options);	
 	this.setXML = function(contentXML, stylesXML){
@@ -192,10 +191,9 @@ var ODTContent = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	// debug
-	console.log('version codigo custom-odt 10');
-	//console.log(jQuery('#xml-vista-formidable').val() );
 	
+	console.log('version codigo custom-odt 15');
+		
 		
     jQuery("#convert-odt").click(function () {		
         jQuery.loadScript = function (url, callback) {
@@ -211,21 +209,21 @@ jQuery('document').ready(function () {
 			
             var req = new XMLHttpRequest();
 			
-			// obtener el nombre de la plantilla desde el html 
-			var nombreFicheroPlantilla = jQuery('div#nombre-plantilla').html();				
-			
-			
-			
-            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroPlantilla + '.odt'); 			 
+			// obtener el nombre del fichero contenedor del que se obtendran
+			// el styles.xml y el content.xml desde la vista formidable 
+			var nombreFicheroContenedor = jQuery('div#nombre-contenedor').html();				
+						
+			// abrimos el fichero 
+            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroContenedor + '.odt'); 			 
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {				
 					
 				
 				// fichero de la plantilla descargada
-				var fichero = req.response;          
+				var ficheroContenedor = req.response;          
 				// 	obtenemos un content y un styles xml vacios desde el fichero 
-				var odtdoc = new ODTContent(fichero);
+				var odtdoc = new ODTContent(ficheroContenedor);
 								
 			
 				
