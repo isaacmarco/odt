@@ -199,7 +199,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 25');
+	console.log('version codigo custom-odt 30');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -238,15 +238,15 @@ jQuery('document').ready(function () {
 				// usamos la KEY, y desde aqui recuperamos la url correspondiente 				
 				var diccionarioCabeceras = {
 					'ESO-1-LENGUA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-MATEMATICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
-					'ESO-1-BIOLOGIA-GEOLOGIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-EDUCACION-FISICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-FRANCES' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-GEOGRAFIA-HISTORIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-INGLES' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-PLASTICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-PRACTICAS-COMUNICATIVAS-CREATIVAS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-TECNOLOGIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
+					'ESO-1-BIOLOGÍA-GEOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-EDUCACIÓN-FÍSICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-FRANCÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-GEOGRAFÍA-HISTORIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-INGLÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-PLÁSTICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-PRÁCTICAS-COMUNICATIVAS-CREATIVAS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-TECNOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-VALORES-ETICOS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
 				};
 							
