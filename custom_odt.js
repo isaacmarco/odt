@@ -199,7 +199,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 40');
+	console.log('version codigo custom-odt 42');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -235,11 +235,12 @@ jQuery('document').ready(function () {
 			
 				
 				// definimos las URLs de cabeceras en un diccionario, en la vista de formidable
-				// usamos la KEY, y desde aqui recuperamos la url correspondiente 				
+				// usamos la KEY, y desde aqui recuperamos la url correspondiente 		
+				/*				
 				var diccionarioCabeceras = {
 					'ESO-1-LENGUA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-BIOLOGÍA-GEOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/matemáticas.png',
+					'ESO-1-BIOLOGÍA-GEOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/BIOLOGÍA-GEOLOGÍA.png',
 					'ESO-1-EDUCACIÓN-FÍSICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-FRANCÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-GEOGRAFÍA-HISTORIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
@@ -250,8 +251,10 @@ jQuery('document').ready(function () {
 					'ESO-1-VALORES-ETICOS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
 					// add aqui ESO-2, etc
 					// ...
-				};
-							
+				};*/
+				
+				
+			
 			
 				// recuperar el id de la actividad (el numero de recurso)
 				var id_actividad = jQuery('div#id-actividad').html();
@@ -260,9 +263,14 @@ jQuery('document').ready(function () {
 				// para la cabecera correspondiente desde la vista 
 				var cabecera_vista = jQuery('div#cabecera-vista-formidable').html();
 				
+				// url base del directorio de medios de wordpress				
+				var url_base = 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/';
+				
+				// obtener la URL completa de la imagen de cabecera
+				var cabeceraURL = url_base + cabecera_vista + '.png';
 						
 				// recuperamos la url de la imagen desde la key 
-				var cabeceraURL = diccionarioCabeceras[cabecera_vista];
+				//var cabeceraURL = diccionarioCabeceras[cabecera_vista];
 				
 				console.log('procesando actividad ' + id_actividad);
 				console.log(cabecera_vista);
