@@ -4,22 +4,11 @@
 *
 */
 
-var xml_estilos = `
-<!-- estilos, se pueden incluir aqui todos los deseados -->
-	<office:automatic-styles>
-		<style:style style:name="Tabla1" style:family="table">
-			<style:table-properties style:width="16.999cm" table:align="margins"/>
-		</style:style>
-		<style:style style:name="Tabla1.A" style:family="table-column">
-			<style:table-column-properties style:column-width="16.999cm" style:rel-column-width="65535*"/>
-		</style:style>
-		<style:style style:name="Tabla1.A1" style:family="table-cell">
-			<style:table-cell-properties fo:padding="0.097cm" fo:border="0.002cm solid #000000"/>
-		</style:style>
-	</office:automatic-styles>
-	<!-- fin de los estilos -->
-`;
-
+// XML completo de una plantilla vacia, pero que incluye
+// el estilo de cabecera y espacio reservado para contenido
+// y estilos propios en XML. Este contenido propio XML se
+// genera desde la vista de formidable y se inserta automaticamente
+// en los tags <estilos-vista-formidable/> y <vista-formidable>
 var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 <office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:textooo="http://openoffice.org/2013/office" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
 	<office:scripts/>
@@ -82,11 +71,12 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 
 
-
-
+// variables para identificar cada tag en la plantilla XML 
+// anteriormente definida
 var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
 var xml_banner_tag = '<banner/>';
 var xml_estilos_vista_formidable_tag = '<estilos-vista-formidable/>';
+
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml en el fichero odt 
@@ -103,7 +93,8 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 71');
+	// debug
+	console.log('version codigo custom-odt 75');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
