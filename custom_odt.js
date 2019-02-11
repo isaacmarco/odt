@@ -168,7 +168,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 				</text:p>
 			</style:header>			
 			<style:footer>
-				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <text:page-number text:select-page="current">1</text:page-number>
+				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <pie/><text:page-number text:select-page="current">1</text:page-number>
 				</text:p>
 			</style:footer>			
 		</style:master-page>		
@@ -180,7 +180,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 // variables para identificar cada tag en la plantilla XML 
 // anteriormente definida
 var xml_cabecera_tag = '<cabecera/>';
-
+var xml_pie_tag = '<pie/>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -199,7 +199,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 31');
+	console.log('version codigo custom-odt 40');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -248,9 +248,14 @@ jQuery('document').ready(function () {
 					'ESO-1-PRÁCTICAS-COMUNICATIVAS-CREATIVAS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-TECNOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-VALORES-ETICOS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
+					// add aqui ESO-2, etc
+					// ...
 				};
 							
 			
+				// recuperar el id de la actividad (el numero de recurso)
+				var id_actividad = jQuery('div#id-actividad').html();
+				
 				// actualizar la cabecera mediante la vista. Primero obtenemos la key 
 				// para la cabecera correspondiente desde la vista 
 				var cabecera_vista = jQuery('div#cabecera-vista-formidable').html();
@@ -259,12 +264,17 @@ jQuery('document').ready(function () {
 				// recuperamos la url de la imagen desde la key 
 				var cabeceraURL = diccionarioCabeceras[cabecera_vista];
 				
+				console.log('procesando actividad ' + id_actividad);
+				console.log(cabecera_vista);
 				console.log('cargando cabecera ' + cabeceraURL);
 				
 				// luego cambiamos el tag de cabecera en el styles.xml definido en este script 
 				// por la nueva URL que acabamos de recuperar 
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_cabecera_tag, cabeceraURL);
 				
+				// ahora cambiamos el pie de pagina definido en el styles.xml de este script
+				// para que indique el numero de recurso o actividad 
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
 				
 				// primero obtenemos el contenido de la vista del formidable 
 				var xml_content = jQuery('#xml-vista-formidable').val();					 
