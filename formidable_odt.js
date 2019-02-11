@@ -1,4 +1,5 @@
 ﻿/*
+*	Formidable-ODT
 *	Programado por Isaac Marco, 2019
 *	isaacmarco@gmail.com
 *	
@@ -196,20 +197,19 @@ var ODTContent = function(odt, options){
 }
 
 
-/*
-// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
-function eliminarDiacriticosEs(texto) {
+// elimina las tildes de los nombres de los ficheros png
+// que estan almacenados en wordpress.
+function EliminarTildes(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();	
+	/*
+	// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
+	function eliminarDiacriticosEs(texto) {
     return texto
            .normalize('NFD')
            .replace(/([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi,"$1")
            .normalize();
-}
-*/
-
-// elimina las tildes de los nombres de los ficheros png
-// que estan almacenados en wordpress.
-function EliminarTildes(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();
+	}
+	*/
 }
 
 	
