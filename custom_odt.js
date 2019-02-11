@@ -104,7 +104,7 @@ var ODT = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 3');
+	console.log('version codigo custom-odt 4');
 	//console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -145,14 +145,13 @@ jQuery('document').ready(function () {
 				// primero obtenemos el contenido de la vista del formidable 
 				var xml_vista_formidable = jQuery('#xml-vista-formidable').val();		
 				 
-				//console.log(xml_vista_formidable);
-				
-				//console.log('------------------------------------------');
+			
+				console.log ( jQuery('#xml-vista-formidable').val() );
 				 
 				// limpiamos las etiquetas </br> y </p> que puede introducir el editor de wordpress
 				// en la vista formidable 
-				var xml_vista_formidable = xml_vista_formidable.replace(/<br.*\/>/gi, '');
-				console.log(xml_vista_formidable);
+				//var xml_vista_formidable = xml_vista_formidable.replace(/<br.*\/>/gi, '');
+				 
 				
 				
 				// sustituir el banner
