@@ -205,14 +205,14 @@ function eliminarDiacriticosEs(texto) {
 }
 */
 function EliminarTildes(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();
 }
 
 	
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 55');
+	console.log('version codigo custom-odt 58');
 		
 		
     jQuery("#convert-odt").click(function () {		
