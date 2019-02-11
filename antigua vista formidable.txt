@@ -1,0 +1,54 @@
+<!-- incluir aqui los estilos en XML que usa esta actividad -->
+<p>estilos XML (debug)</p>
+<textarea id="xml-estilos-vista-formidable">
+</textarea>
+<!-- incluir aqui todos el codigo XML de la vista para la actividad -->
+<p>cuerpo XML (debug, no se reemplazan los [shortcodes])</p>
+<textarea id="xml-vista-formidable"><table:table table:name="Tabla1" table:style-name="Tabla1">
+				<table:table-column table:style-name="Tabla1.A"/>
+				<table:table-column table:style-name="Tabla1.B"/>
+				<table:table-row table:style-name="Tabla1.1">
+					<table:table-cell table:style-name="Tabla1.A1" office:value-type="string">
+						<text:p text:style-name="P1">imagen</text:p>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.B1" office:value-type="string">
+						<text:p text:style-name="Table_20_Contents"/>
+					</table:table-cell>
+				</table:table-row>
+				<table:table-row table:style-name="Tabla1.2">
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="Table_20_Contents">
+							<draw:frame draw:style-name="fr1" draw:name="graficos1" text:anchor-type="paragraph" svg:x="1.009cm" svg:y="0.847cm" svg:width="6.287cm" svg:height="5.426cm" draw:z-index="0">
+								<draw:image xlink:href="[224]" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
+						</text:p>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.B2" office:value-type="string">
+						<text:p text:style-name="Table_20_Contents"/>
+						<text:p text:style-name="Table_20_Contents"/>
+						<text:p text:style-name="Table_20_Contents"/>
+						<text:p text:style-name="Table_20_Contents"/>
+					</table:table-cell>
+				</table:table-row>
+			</table:table>
+			<text:p text:style-name="Standard"/></textarea>
+ 
+[224]
+
+<span id="convert-odt" class="btn btn-outline-success"><i class="fas fa-file-alt"></i> ODT</span>
+<div id="download-area"></div>
+ 
+
+<!-- nombre con el que se descargara el fichero -->
+<div id="nombre-odt" style="display:none;">nombreFichero.odt</div>
+<!-- nombre del fichero de la plantilla, sin .odt -->
+<div id="nombre-plantilla" style="display:none;">odt</div>
+
+
+
+
+
+<!-- javascript -->
+<script src="https://isaacmarco.github.io/odt/custom_odt.js?ver='+ new Date().getTime()"></script> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/html-docx-js-master/test/vendor/FileSaver.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>

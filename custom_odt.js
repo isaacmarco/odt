@@ -265,7 +265,7 @@ var ODTStyles = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 0');
+	console.log('version codigo custom-odt 1');
 	//console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -305,9 +305,7 @@ jQuery('document').ready(function () {
 				// sustituimos en la plantilla el tag <vista-formidable></vista-formidable>
 				// por todo el codigo XML de la vista formidable.
 
-				// primero obtenemos el contenido de la vista del formidable 
-				var xml_vista_formidable = jQuery('#xml-vista-formidable').val();		
-				 
+				
 			
 				//console.log ( jQuery('#xml-vista-formidable').val() );
 				 
@@ -330,13 +328,11 @@ jQuery('document').ready(function () {
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
 				// var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
 				
+				// primero obtenemos el contenido de la vista del formidable 
+				var xml_content = jQuery('#xml-vista-formidable').val();					 
 				
-				// volcamos todo el XML de la vista formidable en el content.xml 
-				var xml_salida = xml_vista_formidable;
-				odtdoc.setXML(xml_salida);		
-				
-				// volcamos todo el XML declarado en este fichero en el  styles.xml
-				odtdoc.setXML(xml_styles_plantilla);
+				// volcamos todo el XML de la vista formidable en el content.xml 				
+				odtdoc.setXML(xml_content, xml_styles_plantilla);
 				
 				 
 				
