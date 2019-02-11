@@ -193,7 +193,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 8');
+	console.log('version codigo custom-odt 10');
 	//console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -239,14 +239,13 @@ jQuery('document').ready(function () {
 			
 				// actualizar la cabecera mediante la vista. Primero obtenemos la key 
 				// para la cabecera correspondiente desde la vista 
-				var cabecera_vista = jQuery('div#cabecera-vista-formidable').val();
+				var cabecera_vista = jQuery('div#cabecera-vista-formidable').html();
 				
-				console.log(cabecera_vista);
-				
+						
 				// recuperamos la url de la imagen desde la key 
 				var cabeceraURL = diccionarioCabeceras[cabecera_vista];
 				
-				console.log(cabeceraURL);
+				console.log('cargando cabecera ' + cabeceraURL);
 				
 				// luego cambiamos el tag de cabecera en el styles.xml definido en este script 
 				// por la nueva URL que acabamos de recuperar 
