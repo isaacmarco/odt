@@ -1,8 +1,0 @@
-<table:table table:name="Tabla2" table:style-name="Tabla1">
-	<table:table-column table:style-name="Tabla1.A"/>
-		<table:table-row>
-			<table:table-cell table:style-name="Tabla1.A1" office:value-type="string">
-				<text:p text:style-name="Table_20_Contents"/>
-			</table:table-cell>
-		</table:table-row>
-</table:table>

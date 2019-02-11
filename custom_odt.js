@@ -168,7 +168,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 				</text:p>
 			</style:header>			
 			<style:footer>
-				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <pie/><text:page-number text:select-page="current">1</text:page-number>
+				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <pie/> | <text:page-number text:select-page="current">1</text:page-number>
 				</text:p>
 			</style:footer>			
 		</style:master-page>		
@@ -195,8 +195,9 @@ var ODTContent = function(odt, options){
 	};	
 }
 
-// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
+
 /*
+// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
 function eliminarDiacriticosEs(texto) {
     return texto
            .normalize('NFD')
@@ -204,6 +205,9 @@ function eliminarDiacriticosEs(texto) {
            .normalize();
 }
 */
+
+// elimina las tildes de los nombres de los ficheros png
+// que estan almacenados en wordpress.
 function EliminarTildes(texto) {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();
 }
@@ -212,7 +216,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 58');
+	console.log('version codigo custom-odt 60');
 		
 		
     jQuery("#convert-odt").click(function () {		
