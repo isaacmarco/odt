@@ -104,7 +104,7 @@ var ODT = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 77');
+	console.log('version codigo custom-odt 81');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -144,7 +144,13 @@ jQuery('document').ready(function () {
 
 				// primero obtenemos el contenido de la vista del formidable 
 				var xml_vista_formidable = jQuery('#xml-vista-formidable').val();		
+				
+				
+				// limpiamos las etiquetas </br> y </p> que puede introducir el editor de wordpress
+				// en la vista formidable 
+				xml_vista_formidable = xml_vista_formidable.replace(/<br.*\/>/gi, '');
 				console.log(xml_vista_formidable);
+				
 				
 				// sustituir el banner
 				var src = '"http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png"';
@@ -154,9 +160,7 @@ jQuery('document').ready(function () {
 				var xml_estilos = jQuery('#xml-estilos-vista-formidable').val();
 				xml_plantilla = xml_plantilla.replace(xml_estilos_vista_formidable_tag, xml_estilos);
 				
-				// limpiamos las etiquetas </br> y </p> que puede introducir el editor de wordpress
-				// en la vista formidable 
-				xml_plantilla = xml_plantilla.replace(/<br.*\/>/gi, '');
+				
 				
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
 				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
