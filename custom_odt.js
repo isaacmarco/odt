@@ -33,21 +33,17 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 	
 	
 	
-	<!-- estilos, se pueden incluir aqui todos los deseados -->
+	<!-- estilos, se pueden incluir aqui todos los que sean comunes -->
 	<office:automatic-styles>
-		<style:style style:name="Tabla1" style:family="table">
-			<style:table-properties style:width="16.999cm" table:align="margins"/>
-		</style:style>
-		<style:style style:name="Tabla1.A" style:family="table-column">
-			<style:table-column-properties style:column-width="16.999cm" style:rel-column-width="65535*"/>
-		</style:style>
-		<style:style style:name="Tabla1.A1" style:family="table-cell">
-			<style:table-cell-properties fo:padding="0.097cm" fo:border="0.002cm solid #000000"/>
-		</style:style>
 		
+		<!-- estilo para el banner -->
 		<style:style style:name="banner" style:family="graphic" style:parent-style-name="Graphics">
 			<style:graphic-properties style:run-through="foreground" style:wrap="run-through" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" style:mirror="none" fo:clip="rect(0cm, 0cm, 0cm, 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" draw:gamma="100%" draw:color-inversion="false" draw:image-opacity="100%" draw:color-mode="standard"/>
 		</style:style>
+		
+		<!-- estilos propios de la actividad, no comunes -->
+		<estilos-vista-formidable/>
+		
 	</office:automatic-styles>
 	<!-- fin de los estilos -->
 	
@@ -90,6 +86,7 @@ var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 
 var xml_vista_formidable_tag = '<vista-formidable></vista-formidable>';
 var xml_banner_tag = '<banner/>';
+var xml_estilos_vista_formidable_tag = '<estilos-vista-formidable/>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml en el fichero odt 
@@ -106,7 +103,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 65');
+	console.log('version codigo custom-odt 70');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -152,6 +149,9 @@ jQuery('document').ready(function () {
 				var src = '"http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png"';
 				xml_plantilla = xml_plantilla.replace(xml_banner_tag, src);
 				
+				// incluir los estilos definidos como XML en la vista de formidable 
+				var xml_estilos = jQuery('#xml-estilos-vista-formidable').val();
+				xml_plantilla = xml_plantilla.replace(xml-estilos-vista-formidable, xml_estilos);
 				
 				
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
