@@ -199,7 +199,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 30');
+	console.log('version codigo custom-odt 31');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -238,7 +238,7 @@ jQuery('document').ready(function () {
 				// usamos la KEY, y desde aqui recuperamos la url correspondiente 				
 				var diccionarioCabeceras = {
 					'ESO-1-LENGUA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
+					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-BIOLOGÍA-GEOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-EDUCACIÓN-FÍSICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-FRANCÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
