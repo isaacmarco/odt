@@ -152,33 +152,27 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 			</style:header-style>
 			<style:footer-style/>
 		</style:page-layout>
-		<style:style style:name="PIE" style:family="paragraph" style:parent-style-name="Footer">
+		<style:style style:name="ESTILO_PIE_PAGINA" style:family="paragraph" style:parent-style-name="Footer">
 			<style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
 			<style:text-properties style:font-name="Arial"/>
 		</style:style>
 	</office:automatic-styles>
 	
-	<office:master-styles>
-	
-		<style:master-page style:name="Standard" style:page-layout-name="Mpm1">
-		
+	<office:master-styles>	
+		<style:master-page style:name="Standard" style:page-layout-name="Mpm1">		
 			<style:header>
 				<text:p text:style-name="Header">
 					<draw:frame draw:style-name="Mfr1" draw:name="gráficos1" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
 						<draw:image xlink:href="<cabecera/>" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" draw:filter-name="&lt;Todos los formatos&gt;"/>
 					</draw:frame>
 				</text:p>
-			</style:header>
-			
+			</style:header>			
 			<style:footer>
-				<text:p text:style-name="PIE">Recurso <text:page-number text:select-page="current">1</text:page-number>
+				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <text:page-number text:select-page="current">1</text:page-number>
 				</text:p>
-			</style:footer>
-			
-		</style:master-page>
-		
-	</office:master-styles>
-	
+			</style:footer>			
+		</style:master-page>		
+	</office:master-styles>	
 	
 </office:document-styles>
 `;
@@ -205,7 +199,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 20');
+	console.log('version codigo custom-odt 25');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -245,6 +239,15 @@ jQuery('document').ready(function () {
 				var diccionarioCabeceras = {
 					'ESO-1-LENGUA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
 					'ESO-1-MATEMATICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
+					'ESO-1-BIOLOGIA-GEOLOGIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-EDUCACION-FISICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-FRANCES' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-GEOGRAFIA-HISTORIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-INGLES' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-PLASTICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-PRACTICAS-COMUNICATIVAS-CREATIVAS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-TECNOLOGIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
+					'ESO-1-VALORES-ETICOS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
 				};
 							
 			
