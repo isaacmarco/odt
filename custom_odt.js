@@ -195,11 +195,24 @@ var ODTContent = function(odt, options){
 	};	
 }
 
+// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
+/*
+function eliminarDiacriticosEs(texto) {
+    return texto
+           .normalize('NFD')
+           .replace(/([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+/gi,"$1")
+           .normalize();
+}
+*/
+function EliminarTildes(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+}
+
 	
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 42');
+	console.log('version codigo custom-odt 55');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -231,30 +244,9 @@ jQuery('document').ready(function () {
 				var ficheroContenedor = req.response;          
 				// 	obtenemos un content y un styles xml vacios desde el fichero 
 				var odtdoc = new ODTContent(ficheroContenedor);
-								
-			
+							
 				
-				// definimos las URLs de cabeceras en un diccionario, en la vista de formidable
-				// usamos la KEY, y desde aqui recuperamos la url correspondiente 		
-				/*				
-				var diccionarioCabeceras = {
-					'ESO-1-LENGUA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-MATEMÁTICAS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/matemáticas.png',
-					'ESO-1-BIOLOGÍA-GEOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/BIOLOGÍA-GEOLOGÍA.png',
-					'ESO-1-EDUCACIÓN-FÍSICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-FRANCÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-GEOGRAFÍA-HISTORIA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-INGLÉS' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-PLÁSTICA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-PRÁCTICAS-COMUNICATIVAS-CREATIVAS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-TECNOLOGÍA' : 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png',
-					'ESO-1-VALORES-ETICOS': 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/lengua.png'
-					// add aqui ESO-2, etc
-					// ...
-				};*/
-				
-				
-			
+		
 			
 				// recuperar el id de la actividad (el numero de recurso)
 				var id_actividad = jQuery('div#id-actividad').html();
@@ -266,6 +258,9 @@ jQuery('document').ready(function () {
 				// url base del directorio de medios de wordpress				
 				var url_base = 'http://www3.gobiernodecanarias.org/medusa/ecoescuela/plantillasrecursos/files/2019/02/';
 				
+				// procesar nombre de fichero para eliminar tildes (wordpress las eliminma)
+				cabecera_vista = EliminarTildes(cabecera_vista);
+				
 				// obtener la URL completa de la imagen de cabecera
 				var cabeceraURL = url_base + cabecera_vista + '.png';
 						
@@ -273,7 +268,6 @@ jQuery('document').ready(function () {
 				//var cabeceraURL = diccionarioCabeceras[cabecera_vista];
 				
 				console.log('procesando actividad ' + id_actividad);
-				console.log(cabecera_vista);
 				console.log('cargando cabecera ' + cabeceraURL);
 				
 				// luego cambiamos el tag de cabecera en el styles.xml definido en este script 
