@@ -103,7 +103,7 @@ var ODT = function(odt, options){
 	
 jQuery('document').ready(function () {    
 	
-	console.log('version codigo custom-odt 70');
+	console.log('version codigo custom-odt 71');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -151,7 +151,7 @@ jQuery('document').ready(function () {
 				
 				// incluir los estilos definidos como XML en la vista de formidable 
 				var xml_estilos = jQuery('#xml-estilos-vista-formidable').val();
-				xml_plantilla = xml_plantilla.replace(xml-estilos-vista-formidable, xml_estilos);
+				xml_plantilla = xml_plantilla.replace(xml_estilos_vista_formidable_tag, xml_estilos);
 				
 				
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
