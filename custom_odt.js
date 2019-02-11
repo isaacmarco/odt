@@ -1,14 +1,24 @@
 ﻿/*
-*	programado por Isaac Marco, 2019
+*	Programado por Isaac Marco, 2019
 *	isaacmarco@gmail.com
+*	
+*	El proposito de este script es escribir el content.xml en 
+*	formato XML-odt de OpenOffice. El script utiliza un odt con un 
+*	content vacio, en el que se inscribe un cuerpo xml_plantilla ya 
+*	prestablecido. Este cuerpo ya contiene algunos estilos, y cuenta
+*	con etiquetas especiales para poder insertar en ellas codigo XML 
+*	adicional de cuerpo y estilos. 
 *
 */
 
-// XML completo de una plantilla vacia, pero que incluye
-// el estilo de cabecera y espacio reservado para contenido
-// y estilos propios en XML. Este contenido propio XML se
-// genera desde la vista de formidable y se inserta automaticamente
-// en los tags <estilos-vista-formidable/> y <vista-formidable>
+// XML completo de una plantilla vacia, pero que incluye el estilo de cabecera y su imagen,
+// asi como un espacio reservado para el contenido y estilos propios en XML generados por la vista
+// del formidable para cada actividad especificamente. El XML de la vista se inserta 
+// automaticamente en los tags <estilos-vista-formidable/> y <vista-formidable>.
+// Puede incluir en esta plantilla los estilos comunes que crea necesario, pero utilice para 
+// ellos nombres que no entren en conflicto con los nombres de estilo usados normalmente
+// por OpenOffice. Por ejemplo, no declare un estilo comun con el nombre "P1", use "negrita".
+// La imagen del banner se inserta utilizando el tag <banner/>.
 var xml_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 <office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:textooo="http://openoffice.org/2013/office" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" office:version="1.2">
 	<office:scripts/>
@@ -94,7 +104,7 @@ var ODT = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	// debug
-	console.log('version codigo custom-odt 75');
+	console.log('version codigo custom-odt 77');
 	console.log(jQuery('#xml-vista-formidable').val() );
 	
 		
@@ -144,6 +154,9 @@ jQuery('document').ready(function () {
 				var xml_estilos = jQuery('#xml-estilos-vista-formidable').val();
 				xml_plantilla = xml_plantilla.replace(xml_estilos_vista_formidable_tag, xml_estilos);
 				
+				// limpiamos las etiquetas </br> y </p> que puede introducir el editor de wordpress
+				// en la vista formidable 
+				xml_plantilla = xml_plantilla.replace(/<br.*\/>/gi, '');
 				
 				// a continuacion hacemos la sustitucion de los tag por todo el nuevo xml de la vista
 				var xml_salida = xml_plantilla.replace(xml_vista_formidable_tag, xml_vista_formidable);
