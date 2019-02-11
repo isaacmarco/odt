@@ -152,10 +152,16 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 			</style:header-style>
 			<style:footer-style/>
 		</style:page-layout>
+		<style:style style:name="PIE" style:family="paragraph" style:parent-style-name="Footer">
+			<style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
+			<style:text-properties style:font-name="Arial"/>
+		</style:style>
 	</office:automatic-styles>
 	
 	<office:master-styles>
+	
 		<style:master-page style:name="Standard" style:page-layout-name="Mpm1">
+		
 			<style:header>
 				<text:p text:style-name="Header">
 					<draw:frame draw:style-name="Mfr1" draw:name="gráficos1" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
@@ -163,7 +169,14 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 					</draw:frame>
 				</text:p>
 			</style:header>
+			
+			<style:footer>
+				<text:p text:style-name="PIE">Recurso <text:page-number text:select-page="current">1</text:page-number>
+				</text:p>
+			</style:footer>
+			
 		</style:master-page>
+		
 	</office:master-styles>
 	
 	
@@ -192,7 +205,7 @@ var ODTContent = function(odt, options){
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 15');
+	console.log('version codigo custom-odt 20');
 		
 		
     jQuery("#convert-odt").click(function () {		
