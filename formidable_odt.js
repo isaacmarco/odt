@@ -224,7 +224,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 70');
+	console.log('version codigo custom-odt 71');
 		
 		
     jQuery("#convert-odt").click(function () {		
