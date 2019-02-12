@@ -12,7 +12,13 @@
 *	
 *	La cabecera se recoge desde el div id = "cabecera-vista-formidable" 
 *	en la vista de formidable, y se inserta en el style.xml incluido 
-*	en este script reemplazando el contenido del tag <cabecera/>.
+*	en este script reemplazando el contenido del tag <cabecera/>. Lo 
+*	mismo ocurre con el pie de pagina, que usa el tag <pie/>.
+*
+*	Para poner la pagina en vertical o en horizontal alterarmos 
+*	el valor de las etiquetas <configuracion-pagina/><ancho-pagina/><alto-pagina/>
+*	del styles.xml incluido en este script. Es en la visa de formidable
+*	donde se indica si la pagina es en horizontal mediante un <div id="pagina-apaisada"/>
 *	
 *	El cuerpo del content.xml se genera todo desde el div id = "xml-vista-formidable",
 *	generando todo el content.xml completo. Por lo tanto, el XML que escriba
@@ -224,7 +230,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 71');
+	console.log('version codigo custom-odt 80');
 		
 		
     jQuery("#convert-odt").click(function () {		
