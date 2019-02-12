@@ -144,8 +144,9 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 		<style:style style:name="Mfr1" style:family="graphic" style:parent-style-name="Graphics">
 			<style:graphic-properties style:vertical-pos="from-top" style:vertical-rel="paragraph" style:horizontal-pos="from-left" style:horizontal-rel="paragraph" style:mirror="none" fo:clip="rect(0cm, 0cm, 0cm, 0cm)" draw:luminance="0%" draw:contrast="0%" draw:red="0%" draw:green="0%" draw:blue="0%" draw:gamma="100%" draw:color-inversion="false" draw:image-opacity="100%" draw:color-mode="standard"/>
 		</style:style>
+		<!-- aqui se puede definir si es print-orientation="portrait" o print-orientation="landscape" -->
 		<style:page-layout style:name="Mpm1">
-			<style:page-layout-properties fo:page-width="20.999cm" fo:page-height="29.699cm" style:num-format="1" style:print-orientation="portrait" fo:margin-top="2cm" fo:margin-bottom="2cm" fo:margin-left="2cm" fo:margin-right="2cm" style:writing-mode="lr-tb" style:footnote-max-height="0cm">
+			<style:page-layout-properties fo:page-width="20.999cm" fo:page-height="29.699cm" style:num-format="1" style:print-orientation="<configuracion-pagina/>" fo:margin-top="2cm" fo:margin-bottom="2cm" fo:margin-left="2cm" fo:margin-right="2cm" style:writing-mode="lr-tb" style:footnote-max-height="0cm">
 				<style:footnote-sep style:width="0.018cm" style:distance-before-sep="0.101cm" style:distance-after-sep="0.101cm" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
 			</style:page-layout-properties>
 			<style:header-style>
@@ -153,6 +154,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 			</style:header-style>
 			<style:footer-style/>
 		</style:page-layout>
+		<!-- pie de pagina -->
 		<style:style style:name="ESTILO_PIE_PAGINA" style:family="paragraph" style:parent-style-name="Footer">
 			<style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
 			<style:text-properties style:font-name="Arial"/>
@@ -182,6 +184,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 // anteriormente definida
 var xml_cabecera_tag = '<cabecera/>';
 var xml_pie_tag = '<pie/>';
+var xml_configuracion_pagina_tag = '<configuracion-pagina/>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -216,7 +219,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 60');
+	console.log('version codigo custom-odt 65');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -268,9 +271,28 @@ jQuery('document').ready(function () {
 				// obtener la URL completa de la imagen de cabecera
 				var cabeceraURL = url_base + cabecera_vista + '.png';
 						
-				// recuperamos la url de la imagen desde la key 
-				//var cabeceraURL = diccionarioCabeceras[cabecera_vista];
+				// comprobar si es un documento vertical o apaisado.			
+				// la configuracion de la pagina se obtiene desde el div 
+				// con id = 'pagina-apaisada' en la vista formidable. 
+				// Si el div existe en la vista, entonces ponemos la vista apaisada,
+				// en caso contrario lo cargamos en vertical 
+				if(jQuery('div#pagina-apaisada').length){ // comprobamos si existe con la propiedad length
+										
+					// la pagina es apaisada 					
+					var pagina = 'landscape';
+					
+				} else {
+					
+					// la pagina es vertical
+					var pagina = 'portrait';
+					
+				}
 				
+				// sustituimos el tag de configuracion de pagina en el styles.xml 
+				// definido en el script por el nuevo valor de la pagina recuperdao
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_configuracion_pagina_tag, pagina);
+				
+				console.log('configuracion de la pagina ' + pagina);
 				console.log('procesando actividad ' + id_actividad);
 				console.log('cargando cabecera ' + cabeceraURL);
 				
