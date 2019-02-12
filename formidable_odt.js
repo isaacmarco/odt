@@ -310,7 +310,7 @@ jQuery('document').ready(function () {
 				
 				// informacion de depuracion 
 				console.log('configuracion de la pagina ' + pagina);
-				console.log('dimensiones de la pagina ' + alto + 'x' + ancho + 'cm');
+				console.log('dimensiones de la pagina ' + alto + ' x ' + ancho);
 				console.log('procesando actividad ' + id_actividad);
 				console.log('cargando cabecera ' + cabeceraURL);
 				
