@@ -171,13 +171,16 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 	
 	<office:master-styles>	
 		<style:master-page style:name="Standard" style:page-layout-name="Mpm1">		
+			<!-- cabecera en vertical -->
 			<style:header>
 				<text:p text:style-name="Header">
-					<draw:frame draw:style-name="Mfr1" draw:name="gráficos1" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="20.999cm" svg:height="1.85cm" draw:z-index="0">
+					<draw:frame draw:style-name="Mfr1" draw:name="gráficos1" text:anchor-type="paragraph" svg:x="-2.223cm" svg:y="-2cm" svg:width="<ancho-cabecera/>" svg:height="<alto-cabecera/>" draw:z-index="0">
 						<draw:image xlink:href="<cabecera/>" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" draw:filter-name="&lt;Todos los formatos&gt;"/>
 					</draw:frame>
 				</text:p>
-			</style:header>			
+			</style:header>	
+			
+			<!-- pie de pagina -->
 			<style:footer>
 				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <pie/> | <text:page-number text:select-page="current">1</text:page-number>
 				</text:p>
@@ -195,7 +198,8 @@ var xml_pie_tag = '<pie/>';
 var xml_configuracion_pagina_tag = '<configuracion-pagina/>';
 var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
-
+var xml_ancho_cabecera_tag = '<ancho-cabecera>';
+var xml_alto_cabecera_tag = '<alto-cabecera>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -230,7 +234,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 80');
+	console.log('version codigo custom-odt 90');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -292,6 +296,9 @@ jQuery('document').ready(function () {
 				var pagina = 'portrait';
 				var alto = '29.699cm';
 				var ancho = '20.999cm';
+				// valores por defecto de la cabecera vertical
+				var anchoCabecera = '20.999cm';
+				var altoCabecera = '1.85cm';
 				
 				if(jQuery('div#pagina-apaisada').length){ // comprobamos si existe con la propiedad length
 										
@@ -301,7 +308,13 @@ jQuery('document').ready(function () {
 					alto = '21.001cm';
 					ancho = '29.7cm';
 					
-				} 
+					// si el documento esta apaisado hay que redimensionar
+					// la cabecera para que la imagen ocupe todo el ancho del papel 
+					anchoCabecera = '29.7cm';
+					 = '2.616cm';
+					
+				} 	
+						
 				
 				  
 				  
@@ -314,6 +327,12 @@ jQuery('document').ready(function () {
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_ancho_pagina_tag, ancho);
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_alto_pagina_tag, alto);
 				
+				// sustituimos las dimensiones de la cabecera
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_ancho_cabecera_tag, anchoCabecera);
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_alto_cabecera_tag, altoCabecera);
+				
+				 
+
 				// informacion de depuracion 
 				console.log('configuracion de la pagina ' + pagina);
 				console.log('dimensiones de la pagina ' + alto + ' x ' + ancho);
