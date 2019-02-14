@@ -311,7 +311,7 @@ jQuery('document').ready(function () {
 					// si el documento esta apaisado hay que redimensionar
 					// la cabecera para que la imagen ocupe todo el ancho del papel 
 					anchoCabecera = '29.7cm';
-					 = '2.616cm';
+					altoCabecera = '2.616cm';
 					
 				} 	
 						
