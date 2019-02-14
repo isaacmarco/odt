@@ -198,8 +198,8 @@ var xml_pie_tag = '<pie/>';
 var xml_configuracion_pagina_tag = '<configuracion-pagina/>';
 var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
-var xml_ancho_cabecera_tag = '<ancho-cabecera>';
-var xml_alto_cabecera_tag = '<alto-cabecera>';
+var xml_ancho_cabecera_tag = '<ancho-cabecera/>';
+var xml_alto_cabecera_tag = '<alto-cabecera/>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -234,7 +234,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 90');
+	console.log('version codigo custom-odt 93');
 		
 		
     jQuery("#convert-odt").click(function () {		
