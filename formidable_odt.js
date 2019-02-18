@@ -315,7 +315,14 @@ jQuery('document').ready(function () {
 					
 				} 	
 						
-				
+					
+				// comprobar si debemos omitir la cabecera 
+				/*
+				if(jQuery('div#omitir-cabecera').length){ 
+				} else {
+					
+				}*/
+				 
 				  
 				  
 
