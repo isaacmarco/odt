@@ -256,7 +256,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 118');
+	console.log('version codigo custom-odt 124');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -376,8 +376,22 @@ jQuery('document').ready(function () {
 				// para que indique el numero de recurso o actividad 
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
 				
+								
 				// primero obtenemos el contenido de la vista del formidable 
-				var xml_content = jQuery('#xml-vista-formidable').val();		
+				var xml_content = jQuery('#xml-vista-formidable').val();	
+
+				// comprobar si se debe utilizar el contenedor alternativo
+				// de xml
+				if(jQuery('div#utilizar-contenido-xml-alternativo').length){
+					// obtenemos el contenido XML desde el otro contenedor
+					// alternativo de la vista, para cargar una plantilla alternativa 
+					console.log('utilizando contenedor alternativo de xml');
+					xml_content = jQuery('#xml-vista-formidable-alternativa').val();	
+					// esto puede ser util para cargar una version, por ejemplo, 
+					// con una columna menos
+				} else {
+					// continuamos normal 
+				}
 
 				/*
 				// comprobar si debemos activar los campos opcionales
