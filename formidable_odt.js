@@ -255,7 +255,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 111');
+	console.log('version codigo custom-odt 112');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -396,7 +396,7 @@ jQuery('document').ready(function () {
 				$('.activar-campo-opcional').each(function(){
 					var tag = this.getAttribute('tag');
 					console.log('encontrado campo opcional con el tag:' + tag);
-					//ActivarTagOpcional(xml_content, tag);
+					ActivarTagOpcional(xml_content, tag);
 				});
 				
 				  
