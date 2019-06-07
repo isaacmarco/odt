@@ -222,9 +222,10 @@ var ODTContent = function(odt, options){
 // adicionales no se muestran. Esta funcion elimina los tags
 // para que sean visibles
 function ActivarCamposOpcionales(contenidoXML){	
-	var tagAbiertoEliminado = contenidoXML.replace(/<opcional>/g, '');
-	var tagCerradoEliminado = tagAbiertoEliminado.replace(/<//opcional>/g, '');
-	return tagCerradoEliminado;
+	return  contenidoXML.replace(<opcional>|<\/opcional>/g, '');
+	//var tagAbiertoEliminado = contenidoXML.replace(/<opcional>/g, '');
+	//var tagCerradoEliminado = tagAbiertoEliminado.replace(/<//opcional>/g, '');
+	//return tagCerradoEliminado;
 }
 
 // elimina las tildes de los nombres de los ficheros png
@@ -246,7 +247,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 101');
+	console.log('version codigo custom-odt 102');
 		
 		
     jQuery("#convert-odt").click(function () {		
