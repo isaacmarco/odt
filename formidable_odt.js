@@ -371,10 +371,12 @@ jQuery('document').ready(function () {
 
 				// comprobar si debemos activar los campos opcionales
 				// de la plantilla
-				if(jQuery('div#activar-campos-adicionales').length){
+				if(jQuery('div#activar-campos-opcionales').length){
+					console.log('mostrando campos opcionales de la plantilla');
 					xml_content = ActivarCamposOpcionales(xml_content);
 				} else {
-					// los campos adicionales continuan desactivados 
+					// los campos opcionales continuan desactivados 
+					console.log('campos opcionales de la plantilla ocultos');
 				}
 				  
 				
