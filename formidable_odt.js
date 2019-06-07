@@ -254,7 +254,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 105');
+	console.log('version codigo custom-odt 108');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -342,15 +342,8 @@ jQuery('document').ready(function () {
 				} else {
 					
 				}*/
-				'activar-campo-opcional'
-				//var campoOpcional = document.getElementById('activar-campo-opcional').getAttribute('value');
-				$('.activar-campo-opcional').each(function(){
-					//var tag = this.getAttribute('tag');
-					//console.log(tag);
-					console.log('encontrado');
-					// ...
-				});
 				
+			
 				  
 
 				// sustituimos el tag de configuracion de pagina en el styles.xml 
@@ -396,6 +389,14 @@ jQuery('document').ready(function () {
 				}
 				*/
 				
+					
+				// obtener e iterar una lista de todos los div
+				// con la class 'activar-campo-opcional' e ir activandolos 
+				$('.activar-campo-opcional').each(function(){
+					var tag = this.getAttribute('tag');
+					console.log('encontrado campo opcional con el tag:' + tag);
+					ActivarTagOpcional(xml_content, tag);
+				});
 				
 				  
 				
