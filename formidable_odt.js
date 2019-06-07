@@ -200,8 +200,8 @@ var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
 var xml_ancho_cabecera_tag = '<ancho-cabecera/>';
 var xml_alto_cabecera_tag = '<alto-cabecera/>';
-var xml_opcional_tag_abierto = '<opcional>';
-var xml_opcional_tag_cerrado = '</opcional>';
+//var xml_opcional_tag_abierto = '<opcional>';
+//var xml_opcional_tag_cerrado = '</opcional>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -222,11 +222,18 @@ var ODTContent = function(odt, options){
 // adicionales no se muestran. Esta funcion elimina los tags
 // para que sean visibles
 function ActivarCamposOpcionales(contenidoXML){	
-	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');
-	//var tagAbiertoEliminado = contenidoXML.replace(/<opcional>/g, '');
-	//var tagCerradoEliminado = tagAbiertoEliminado.replace(/<//opcional>/g, '');
-	//return tagCerradoEliminado;
+	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');	
 }
+
+// funcion para desactivar un campo opcional concreto mediante
+// su tag
+function ActivarTagOpcional(contenidoXML, tag){
+	// montamos la cadena para la expresion regular 
+	var cadena = '<' + tag + '>|<\/' + tag + '>';
+	var expresion = new RegExp(cadena, 'g');
+	return contenidoXML.replace( expresion, '');
+}
+
 
 // elimina las tildes de los nombres de los ficheros png
 // que estan almacenados en wordpress.
@@ -247,7 +254,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 102');
+	console.log('version codigo custom-odt 105');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -335,7 +342,13 @@ jQuery('document').ready(function () {
 				} else {
 					
 				}*/
-				
+				'activar-campo-opcional'
+				//var campoOpcional = document.getElementById('activar-campo-opcional').getAttribute('value');
+				$('.activar-campo-opcional').each(function( index ){
+					var tag = this.getAttribute('tag');
+					console.log(tag);
+					// ...
+				});
 				
 				  
 
@@ -370,6 +383,7 @@ jQuery('document').ready(function () {
 				// primero obtenemos el contenido de la vista del formidable 
 				var xml_content = jQuery('#xml-vista-formidable').val();		
 
+				/*
 				// comprobar si debemos activar los campos opcionales
 				// de la plantilla
 				if(jQuery('div#activar-campos-opcionales').length){
@@ -379,6 +393,9 @@ jQuery('document').ready(function () {
 					// los campos opcionales continuan desactivados 
 					console.log('campos opcionales de la plantilla ocultos');
 				}
+				*/
+				
+				
 				  
 				
 				// volcamos todo el XML de la vista formidable en el content.xml 				
