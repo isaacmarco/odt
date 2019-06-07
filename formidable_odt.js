@@ -222,7 +222,7 @@ var ODTContent = function(odt, options){
 // adicionales no se muestran. Esta funcion elimina los tags
 // para que sean visibles
 function ActivarCamposOpcionales(contenidoXML){	
-	return  contenidoXML.replace(<opcional>|<\/opcional>/g, '');
+	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');
 	//var tagAbiertoEliminado = contenidoXML.replace(/<opcional>/g, '');
 	//var tagCerradoEliminado = tagAbiertoEliminado.replace(/<//opcional>/g, '');
 	//return tagCerradoEliminado;
