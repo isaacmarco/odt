@@ -13,13 +13,16 @@
 			<style:table-properties style:width="16.999cm" table:align="margins"/>
 		</style:style>
 		<style:style style:name="Tabla1.A" style:family="table-column">
-			<style:table-column-properties style:column-width="15.214cm" style:rel-column-width="58653*"/>
+			<style:table-column-properties style:column-width="12.783cm" style:rel-column-width="49281*"/>
 		</style:style>
 		<style:style style:name="Tabla1.B" style:family="table-column">
-			<style:table-column-properties style:column-width="0.847cm" style:rel-column-width="3264*"/>
+			<style:table-column-properties style:column-width="0.711cm" style:rel-column-width="2743*"/>
 		</style:style>
 		<style:style style:name="Tabla1.C" style:family="table-column">
-			<style:table-column-properties style:column-width="0.938cm" style:rel-column-width="3618*"/>
+			<style:table-column-properties style:column-width="0.788cm" style:rel-column-width="3040*"/>
+		</style:style>
+		<style:style style:name="Tabla1.D" style:family="table-column">
+			<style:table-column-properties style:column-width="2.716cm" style:rel-column-width="10471*"/>
 		</style:style>
 		<style:style style:name="Tabla1.A1" style:family="table-cell">
 			<style:table-cell-properties fo:padding="0.097cm" fo:border="0.002cm solid #000000"/>
@@ -27,23 +30,23 @@
 		<style:style style:name="Tabla1.A2" style:family="table-cell">
 			<style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.002cm solid #000000" fo:border-right="none" fo:border-top="none" fo:border-bottom="0.002cm solid #000000"/>
 		</style:style>
-		<style:style style:name="Tabla1.C2" style:family="table-cell">
+		<style:style style:name="Tabla1.D2" style:family="table-cell">
 			<style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.002cm solid #000000" fo:border-right="0.002cm solid #000000" fo:border-top="none" fo:border-bottom="0.002cm solid #000000"/>
 		</style:style>
 		<style:style style:name="P1" style:family="paragraph" style:parent-style-name="Standard">
 			<style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
 			<style:text-properties style:font-name="Arial" fo:font-size="16pt" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="bold" style:font-size-asian="16pt" style:font-weight-asian="bold" style:font-size-complex="16pt" style:font-weight-complex="bold"/>
 		</style:style>
-		<style:style style:name="P2" style:family="paragraph" style:parent-style-name="Standard">
-			<style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
-			<style:text-properties style:font-name="Arial" fo:font-size="16pt" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color" fo:font-weight="bold" style:font-size-asian="16pt" style:font-weight-asian="bold" style:font-size-complex="16pt" style:font-weight-complex="bold"/>
-		</style:style>
-		<style:style style:name="P3" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+		<style:style style:name="P2" style:family="paragraph" style:parent-style-name="Table_20_Contents">
 			<style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
 			<style:text-properties style:font-name="Arial"/>
 		</style:style>
-		<style:style style:name="P4" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+		<style:style style:name="P3" style:family="paragraph" style:parent-style-name="Table_20_Contents">
 			<style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+			<style:text-properties style:font-name="Arial" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+		</style:style>
+		<style:style style:name="P4" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+			<style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
 			<style:text-properties style:font-name="Arial" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
 		</style:style>
 		<style:style style:name="P5" style:family="paragraph" style:parent-style-name="Table_20_Contents">
@@ -61,92 +64,112 @@
 				<text:sequence-decl text:display-outline-level="0" text:name="Text"/>
 				<text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
 			</text:sequence-decls>
-			<text:p text:style-name="P1">LISTA DE COTEJO</text:p>
+			<text:p text:style-name="P1">[168]</text:p>
 			<text:p text:style-name="P1"/>
 			<text:p text:style-name="P1"/>
 			<table:table table:name="Tabla1" table:style-name="Tabla1">
 				<table:table-column table:style-name="Tabla1.A"/>
 				<table:table-column table:style-name="Tabla1.B"/>
 				<table:table-column table:style-name="Tabla1.C"/>
+				<table:table-column table:style-name="Tabla1.D"/>
 				
-					
 				<!-- zona de repeticion -->
 				[foreach 229]
-				
+
+
 				<table:table-row>
-					<table:table-cell table:style-name="Tabla1.A1" table:number-columns-spanned="3" office:value-type="string">
+					<table:table-cell table:style-name="Tabla1.A1" table:number-columns-spanned="4" office:value-type="string">
 						<text:p text:style-name="P5">[169]</text:p>
 					</table:table-cell>
 					<table:covered-table-cell/>
 					<table:covered-table-cell/>
+					<table:covered-table-cell/>
 				</table:table-row>
 				<table:table-row>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P4">Sí</text:p>
-					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P4">No</text:p>
-					</table:table-cell>
-				</table:table-row>				
-			
-				<table:table-row>
-					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3">[170]</text:p>
+						<text:p text:style-name="P3">Sí</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P3">No</text:p>
 					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P4">A veces</text:p>
 					</table:table-cell>
 				</table:table-row>
 				<table:table-row>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3">[171]</text:p>
+						<text:p text:style-name="P2">[170]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
 				</table:table-row>
 				<table:table-row>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3">[172]</text:p>
+						<text:p text:style-name="P2">[171]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
 				</table:table-row>
 				<table:table-row>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3">[173]</text:p>
+						<text:p text:style-name="P2">[172]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
 				</table:table-row>
 				<table:table-row>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3">[174]</text:p>
+						<text:p text:style-name="P2">[173]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
-					<table:table-cell table:style-name="Tabla1.C2" office:value-type="string">
-						<text:p text:style-name="P3"/>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P2"/>
 					</table:table-cell>
 				</table:table-row>
+				<table:table-row>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2">[174]</text:p>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.A2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+					<table:table-cell table:style-name="Tabla1.D2" office:value-type="string">
+						<text:p text:style-name="P2"/>
+					</table:table-cell>
+				</table:table-row>
+				
 				[/foreach]
 				<!-- zona de repeticion -->
 				

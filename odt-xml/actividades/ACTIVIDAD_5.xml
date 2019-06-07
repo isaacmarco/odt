@@ -90,16 +90,16 @@
 						<text:p text:style-name="P6">INDICADORES</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A1" office:value-type="string">
-						<text:p text:style-name="P7">NUNCA</text:p>
+						<text:p text:style-name="P7">[412]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A1" office:value-type="string">
-						<text:p text:style-name="P7">A VECES</text:p>
+						<text:p text:style-name="P7">[413]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.A1" office:value-type="string">
-						<text:p text:style-name="P7">BASTANTE</text:p>
+						<text:p text:style-name="P7">[414]</text:p>
 					</table:table-cell>
 					<table:table-cell table:style-name="Tabla1.F1" office:value-type="string">
-						<text:p text:style-name="P7">SIEMPRE</text:p>
+						<text:p text:style-name="P7">[415]</text:p>
 					</table:table-cell>
 				</table:table-row>
 				
