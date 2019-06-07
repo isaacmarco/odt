@@ -228,6 +228,7 @@ function ActivarCamposOpcionales(contenidoXML){
 // funcion para desactivar un campo opcional concreto mediante
 // su tag
 function ActivarTagOpcional(contenidoXML, tag){
+	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');	
 	// montamos la cadena para la expresion regular 	
 	var cadena = '<' + tag + '>|<\/' + tag + '>';
 	console.log('activando campo adicional' + cadena);
@@ -255,7 +256,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 112');
+	console.log('version codigo custom-odt 113');
 		
 		
     jQuery("#convert-odt").click(function () {		
