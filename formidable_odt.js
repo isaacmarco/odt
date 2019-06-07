@@ -200,6 +200,8 @@ var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
 var xml_ancho_cabecera_tag = '<ancho-cabecera/>';
 var xml_alto_cabecera_tag = '<alto-cabecera/>';
+var xml_opcional_tag_abierto = '<opcional>';
+var xml_opcional_tag_cerrado = '</opcional>';
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -214,6 +216,16 @@ var ODTContent = function(odt, options){
 	};	
 }
 
+
+// activa los campos etiquetados entre <opcional></opcional>
+// para que se muestren en la plantilla. Por defecto los campos 
+// adicionales no se muestran. Esta funcion elimina los tags
+// para que sean visibles
+function ActivarCamposOpcionales(texto){
+	var tagAbiertoEliminado = texto.replace(xml_opcional_tag_abierto, '');
+	var tagCerradoEliminado = tagAbiertoEliminado.replace(xml_opcional_tag_cerrado, '');
+	return tagCerradoEliminado;
+}
 
 // elimina las tildes de los nombres de los ficheros png
 // que estan almacenados en wordpress.
@@ -234,7 +246,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 93');
+	console.log('version codigo custom-odt 100');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -322,8 +334,8 @@ jQuery('document').ready(function () {
 				} else {
 					
 				}*/
-				 
-				  
+				
+				
 				  
 
 				// sustituimos el tag de configuracion de pagina en el styles.xml 
@@ -355,7 +367,16 @@ jQuery('document').ready(function () {
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
 				
 				// primero obtenemos el contenido de la vista del formidable 
-				var xml_content = jQuery('#xml-vista-formidable').val();					 
+				var xml_content = jQuery('#xml-vista-formidable').val();		
+
+				// comprobar si debemos activar los campos opcionales
+				// de la plantilla
+				if(jQuery('div#activar-campos-adicionales').length){
+					xml_content = ActivarCamposOpcionales(xml_content);
+				} else {
+					// los campos adicionales continuan desactivados 
+				}
+				  
 				
 				// volcamos todo el XML de la vista formidable en el content.xml 				
 				odtdoc.setXML(xml_content, xml_styles_plantilla);
