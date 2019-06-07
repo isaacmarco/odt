@@ -344,9 +344,10 @@ jQuery('document').ready(function () {
 				}*/
 				'activar-campo-opcional'
 				//var campoOpcional = document.getElementById('activar-campo-opcional').getAttribute('value');
-				$('.activar-campo-opcional').each(function( index ){
-					var tag = this.getAttribute('tag');
-					console.log(tag);
+				$('.activar-campo-opcional').each(function(){
+					//var tag = this.getAttribute('tag');
+					//console.log(tag);
+					console.log('encontrado');
 					// ...
 				});
 				
