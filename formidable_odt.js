@@ -396,7 +396,7 @@ jQuery('document').ready(function () {
 				$('.activar-campo-opcional').each(function(){
 					var tag = this.getAttribute('tag');
 					console.log('encontrado campo opcional con el tag:' + tag);
-					ActivarTagOpcional(xml_content, tag);
+					xml_content = ActivarTagOpcional(xml_content, tag);
 				});
 				
 				  
