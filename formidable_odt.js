@@ -221,16 +221,16 @@ var ODTContent = function(odt, options){
 // para que se muestren en la plantilla. Por defecto los campos 
 // adicionales no se muestran. Esta funcion elimina los tags
 // para que sean visibles
-function ActivarCamposOpcionales(texto){
-	var tagAbiertoEliminado = texto.replace(xml_opcional_tag_abierto, '');
-	var tagCerradoEliminado = tagAbiertoEliminado.replace(xml_opcional_tag_cerrado, '');
+function ActivarCamposOpcionales(contenidoXML){	
+	var tagAbiertoEliminado = contenidoXML.replace(/<opcional>/g, '');
+	var tagCerradoEliminado = tagAbiertoEliminado.replace(/<//opcional>/g, '');
 	return tagCerradoEliminado;
 }
 
 // elimina las tildes de los nombres de los ficheros png
 // que estan almacenados en wordpress.
-function EliminarTildes(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();	
+function EliminarTildes(contenidoXML) {
+    return contenidoXML.normalize('NFD').replace(/[\u0300-\u036f]/g,"").toLowerCase();	
 	/*
 	// Elimina los diacríticos de un texto excepto si es una "ñ" (ES6)
 	function eliminarDiacriticosEs(texto) {
@@ -246,7 +246,7 @@ function EliminarTildes(texto) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 100');
+	console.log('version codigo custom-odt 101');
 		
 		
     jQuery("#convert-odt").click(function () {		
