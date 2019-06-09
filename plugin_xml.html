@@ -1,0 +1,97 @@
+<title>File API</title>
+<style>
+#holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #333; }
+</style>
+<article>
+  <div id="holder"></div> 
+  <p id="status">File API &amp; FileReader API not supported</p>
+  <p>Drag an image from your desktop on to the drop zone 
+  above to see the browser read the contents of the file and use it as the background - without uploading the file to any servers.</p>
+</article>
+
+<script>
+
+/*
+var XML_LINARIZATION_REGEX  = '(>|&gt;){1,1}(\\t)*(\\n|\\r)+(\\s)*(<|&lt;){1,1}';
+var XML_LINARIZATION_REPLACEMENT = '$1$5';
+function Linearizar(contenido_xml){
+	return contenido_xml.replace('','');
+}*/
+
+var holder = document.getElementById('holder'),
+    state = document.getElementById('status');
+if (typeof window.FileReader === 'undefined') {
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'File API & FileReader available';
+}
+ 
+holder.ondragover = function () { this.className = 'hover'; return false; };
+holder.ondragend = function () { this.className = ''; return false; };
+holder.ondrop = function (e) {
+  this.className = '';
+  e.preventDefault();
+		var file = e.dataTransfer.files[0],
+		reader = new FileReader();
+	  
+	 
+		var textType = /text.*/;
+
+
+		reader.onload = function(e) {
+			var text = reader.result;
+			console.log(text);
+		}
+
+		reader.readAsText(file);
+		
+		
+		
+		
+		
+		
+		
+		/*
+		if (typeof someObject == 'undefined') $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js', function () {
+			
+            var req = new XMLHttpRequest();
+			
+			// obtener el nombre del fichero contenedor del que se obtendran
+			// el styles.xml y el content.xml desde la vista formidable 
+			var nombreFicheroContenedor = jQuery('div#nombre-contenedor').html();				
+						
+			// abrimos el fichero 
+            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroContenedor + '.odt'); 			 
+            req.responseType = 'arraybuffer';
+            
+			req.addEventListener('load', function () {				
+					
+				
+				// fichero de la plantilla descargada
+				var ficheroContenedor = req.response;          
+				// 	obtenemos un content y un styles xml vacios desde el fichero 
+				var odtdoc = new ODTContent(ficheroContenedor);
+								
+				// volcamos todo el XML de la vista formidable en el content.xml 				
+				odtdoc.setXML(xml_content, xml_styles_plantilla);
+								 
+				
+				// obtenemos el ODT ya comprimido
+				var odt = odtdoc.getODT();	
+				// pasamos el odt a largue binary object
+				var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");				
+				// creamos el link de descarga
+				CrearLinkDescarga(blob);
+				
+            });			
+			
+            req.send();
+            $.loadScript('http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/jszip/dist/jszip.min.js');
+        });
+		*/
+
+  return false;
+};
+</script>
