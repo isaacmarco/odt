@@ -217,6 +217,12 @@ var ODTContent = function(odt, options){
 }
 
 
+// eliminar los tags <p></p> que formidable introduce
+// automaticamente en los campos de formulario de tipo parrafo
+function LimpiarCamposParrafo(contenidoXML){
+	return contenidoXML.replace(/<p>|<\/p>/g, '');
+}
+
 // activa los campos etiquetados entre <opcional></opcional>
 // para que se muestren en la plantilla. Por defecto los campos 
 // adicionales no se muestran. Esta funcion elimina los tags
@@ -256,7 +262,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 124');
+	console.log('version codigo custom-odt 130');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -413,6 +419,10 @@ jQuery('document').ready(function () {
 					console.log('encontrado campo opcional con el tag:' + tag);
 					xml_content = ActivarTagOpcional(xml_content, tag);
 				});
+				
+				// limpiar los tags <p></p> de los campos de parrafo
+				// de formidable
+				xml_content = LimpiarCamposParrafo(xml_content);
 				
 				  
 				
