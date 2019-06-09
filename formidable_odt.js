@@ -200,8 +200,7 @@ var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
 var xml_ancho_cabecera_tag = '<ancho-cabecera/>';
 var xml_alto_cabecera_tag = '<alto-cabecera/>';
-//var xml_opcional_tag_abierto = '<opcional>';
-//var xml_opcional_tag_cerrado = '</opcional>';
+
 
 // objeto ODT permite comprimir y descomprimir
 // el content.xml y el styles.xml en el fichero odt 
@@ -223,13 +222,14 @@ function LimpiarCamposParrafo(contenidoXML){
 	return contenidoXML.replace(/<p>|<\/p>/g, '');
 }
 
-// activa los campos etiquetados entre <opcional></opcional>
-// para que se muestren en la plantilla. Por defecto los campos 
-// adicionales no se muestran. Esta funcion elimina los tags
-// para que sean visibles
-function ActivarCamposOpcionales(contenidoXML){	
-	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');	
+
+
+// elimina las medidas 150x150 de la url del campo imagen 
+// para que no se utilicen las imagen en miniatura del wordpress
+function LimpiarCamposImagen(contenidoXML){
+	return contenidoXML.replace(/-150x150.jpg/g, '.jpg');
 }
+
 
 // funcion para desactivar un campo opcional concreto mediante
 // su tag
@@ -258,11 +258,20 @@ function EliminarTildes(contenidoXML) {
 	*/
 }
 
+
+// activa los campos etiquetados entre <opcional></opcional>
+// para que se muestren en la plantilla. Por defecto los campos 
+// adicionales no se muestran. Esta funcion elimina los tags
+// para que sean visibles
+//function ActivarCamposOpcionales(contenidoXML){	
+//	return  contenidoXML.replace(/<opcional>|<\/opcional>/g, '');	
+//}
+
 	
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 130');
+	console.log('version codigo custom-odt 135');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -382,10 +391,12 @@ jQuery('document').ready(function () {
 				// para que indique el numero de recurso o actividad 
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
 				
+				
 								
 				// primero obtenemos el contenido de la vista del formidable 
 				var xml_content = jQuery('#xml-vista-formidable').val();	
 
+				
 				// comprobar si se debe utilizar el contenedor alternativo
 				// de xml
 				if(jQuery('div#utilizar-contenido-xml-alternativo').length){
@@ -399,18 +410,7 @@ jQuery('document').ready(function () {
 					// continuamos normal 
 				}
 
-				/*
-				// comprobar si debemos activar los campos opcionales
-				// de la plantilla
-				if(jQuery('div#activar-campos-opcionales').length){
-					console.log('mostrando campos opcionales de la plantilla');
-					xml_content = ActivarCamposOpcionales(xml_content);
-				} else {
-					// los campos opcionales continuan desactivados 
-					console.log('campos opcionales de la plantilla ocultos');
-				}
-				*/
-				
+							
 					
 				// obtener e iterar una lista de todos los div
 				// con la class 'activar-campo-opcional' e ir activandolos 
@@ -424,7 +424,9 @@ jQuery('document').ready(function () {
 				// de formidable
 				xml_content = LimpiarCamposParrafo(xml_content);
 				
-				  
+				// cambia las url de las imagenes para no cargar las imagenes 
+				// en miniatura de wordpress y utilizar las completas 
+				xml_content = LimpiarCamposImagen(xml_content);
 				
 				// volcamos todo el XML de la vista formidable en el content.xml 				
 				odtdoc.setXML(xml_content, xml_styles_plantilla);
