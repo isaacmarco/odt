@@ -1,7 +1,11 @@
 <head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
-<script type="text/javascript" src="dist/jszip-utils.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+ 
+
+<script type="text/javascript" src="https://raw.github.com/Stuk/jszip/master/jszip.js"></script>
+<script type="text/javascript" src="https://raw.github.com/Stuk/jszip/master/jszip-utils-ie.min.js.js"></script>
+
 </head>
 
 <h3>Choose the local(s) zip file(s)</h3>
@@ -29,10 +33,32 @@ $("#file").on("change", function(evt) {
         var $fileContent = $("<ul>");
         $result.append($title);
         $result.append($fileContent);
+		
+		
+	
+		JSZip.loadAsync(f)
+		.then(function(zip) {
+			
+				
+			zip.file("content.xml").async("string").then(function (data) {
+				console.log(data);
+			});
+			
+		});
+		
+	
 
+		
+		
+			
+			
         var dateBefore = new Date();
         JSZip.loadAsync(f)                                   // 1) read the Blob
         .then(function(zip) {
+			
+				
+			 
+		
             var dateAfter = new Date();
             $title.append($("<span>", {
                 "class": "small",
@@ -40,16 +66,32 @@ $("#file").on("change", function(evt) {
             }));
 
             zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
-                $fileContent.append($("<li>", {
-                    text : zipEntry.name
-                }));
+				
+				if( zipEntry.name == 'content.xml'){
+				
+					zip.file("content.xml").async("string").then(function (data) {
+					 $fileContent.append($("<li>", {
+                    text : data
+					}));
+					});
+				
+               
+				
+				
+				}
+				
+				
             });
+			
+			
         }, function (e) {
             $result.append($("<div>", {
                 "class" : "alert alert-danger",
                 text : "Error reading " + f.name + ": " + e.message
             }));
         });
+		
+		
     }
 
     var files = evt.target.files;
