@@ -182,8 +182,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 			
 			<!-- pie de pagina -->
 			<style:footer>
-				<text:p text:style-name="ESTILO_PIE_PAGINA">SA<SA/>_Recurso<pie/> | <text:page-number text:select-page="current">1</text:page-number>
-				</text:p>
+				<text:p text:style-name="ESTILO_PIE_PAGINA">SA<SA/>_Recurso<pie/> | <text:page-number text:select-page="current">1</text:page-number> página </text:p>
 			</style:footer>					
 		</style:master-page>		
 	</office:master-styles>	
@@ -272,7 +271,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 140');
+	console.log('version codigo custom-odt 145');
 		
 		
     jQuery("#convert-odt").click(function () {		
