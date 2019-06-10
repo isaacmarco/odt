@@ -310,7 +310,7 @@ jQuery('document').ready(function () {
 			
 				// recuperar el id de la actividad (el numero de recurso)
 				var id_actividad = jQuery('div#id-actividad').html();
-				var sa = jQuery('div#id-sa').html();
+				var id_sa = jQuery('div#id-sa').html();
 				
 				// actualizar la cabecera mediante la vista. Primero obtenemos la key 
 				// para la cabecera correspondiente desde la vista 
@@ -382,7 +382,7 @@ jQuery('document').ready(function () {
 				// informacion de depuracion 
 				console.log('configuracion de la pagina ' + pagina);
 				console.log('dimensiones de la pagina ' + alto + ' x ' + ancho);
-				console.log('procesando actividad ' + id_actividad + ' con SA ' + sa);				
+				console.log('procesando actividad ' + id_actividad + ' con SA ' + id_sa);				
 				console.log('cargando cabecera ' + cabeceraURL);
 				
 				// luego cambiamos el tag de cabecera en el styles.xml definido en este script 
@@ -392,7 +392,7 @@ jQuery('document').ready(function () {
 				// ahora cambiamos el pie de pagina definido en el styles.xml de este script
 				// para que indique el numero de recurso o actividad 
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
-				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_SA_tag, sa);
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_SA_tag, id_sa);
 				
 								
 				// primero obtenemos el contenido de la vista del formidable 
