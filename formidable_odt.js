@@ -182,9 +182,9 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 			
 			<!-- pie de pagina -->
 			<style:footer>
-				<text:p text:style-name="ESTILO_PIE_PAGINA">Recurso <pie/> | <text:page-number text:select-page="current">1</text:page-number>
+				<text:p text:style-name="ESTILO_PIE_PAGINA">SA<SA/>_Recurso<pie/> | <text:page-number text:select-page="current">1</text:page-number>
 				</text:p>
-			</style:footer>			
+			</style:footer>					
 		</style:master-page>		
 	</office:master-styles>	
 	
@@ -195,6 +195,7 @@ var xml_styles_plantilla = `<?xml version="1.0" encoding="UTF-8"?>
 // anteriormente definida
 var xml_cabecera_tag = '<cabecera/>';
 var xml_pie_tag = '<pie/>';
+var xml_pie_SA_tag = '<SA/>';
 var xml_configuracion_pagina_tag = '<configuracion-pagina/>';
 var xml_ancho_pagina_tag = '<ancho-pagina/>';
 var xml_alto_pagina_tag = '<alto-pagina/>';
@@ -271,7 +272,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 135');
+	console.log('version codigo custom-odt 140');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -309,6 +310,7 @@ jQuery('document').ready(function () {
 			
 				// recuperar el id de la actividad (el numero de recurso)
 				var id_actividad = jQuery('div#id-actividad').html();
+				var sa = jQuery('div#id-sa').html();
 				
 				// actualizar la cabecera mediante la vista. Primero obtenemos la key 
 				// para la cabecera correspondiente desde la vista 
@@ -380,7 +382,7 @@ jQuery('document').ready(function () {
 				// informacion de depuracion 
 				console.log('configuracion de la pagina ' + pagina);
 				console.log('dimensiones de la pagina ' + alto + ' x ' + ancho);
-				console.log('procesando actividad ' + id_actividad);
+				console.log('procesando actividad ' + id_actividad + ' con SA ' + sa);				
 				console.log('cargando cabecera ' + cabeceraURL);
 				
 				// luego cambiamos el tag de cabecera en el styles.xml definido en este script 
@@ -390,7 +392,7 @@ jQuery('document').ready(function () {
 				// ahora cambiamos el pie de pagina definido en el styles.xml de este script
 				// para que indique el numero de recurso o actividad 
 				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_tag, id_actividad);
-				
+				xml_styles_plantilla = xml_styles_plantilla.replace(xml_pie_SA_tag, sa);
 				
 								
 				// primero obtenemos el contenido de la vista del formidable 
@@ -426,7 +428,7 @@ jQuery('document').ready(function () {
 				
 				// cambia las url de las imagenes para no cargar las imagenes 
 				// en miniatura de wordpress y utilizar las completas 
-				xml_content = LimpiarCamposImagen(xml_content);
+				// xml_content = LimpiarCamposImagen(xml_content);
 				
 				// volcamos todo el XML de la vista formidable en el content.xml 				
 				odtdoc.setXML(xml_content, xml_styles_plantilla);
