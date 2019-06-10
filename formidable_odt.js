@@ -272,7 +272,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 140');
+	console.log('version codigo custom-odt 141');
 		
 		
     jQuery("#convert-odt").click(function () {		
