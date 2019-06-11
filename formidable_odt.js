@@ -271,7 +271,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt 150');
+	console.log('version codigo custom-odt 151');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -355,7 +355,7 @@ jQuery('document').ready(function () {
 						
 					
 				// comprobar si debemos omitir la cabecera 
-				 
+				/*
 				if(jQuery('div#omitir-cabecera').length){ 
 				
 					// no procesamos la cabecera 
@@ -363,7 +363,7 @@ jQuery('document').ready(function () {
 				} else {
 					
 			
-						
+				}*/	
 				  
 
 				// sustituimos el tag de configuracion de pagina en el styles.xml 
@@ -397,7 +397,6 @@ jQuery('document').ready(function () {
 				
 				
 				
-				}
 				
 								
 				// primero obtenemos el contenido de la vista del formidable 
