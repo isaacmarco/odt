@@ -1,0 +1,48 @@
+<office:annotation>
+	<dc:creator>Autor desconocido</dc:creator>
+	<dc:date>2019-02-12T19:39:49.47</dc:date>
+		<text:p text:style-name="P1">
+		<text:span text:style-name="T1">[foreach 33]</text:span>
+		</text:p>
+</office:annotation>
+
+
+<office:annotation>
+	<dc:creator>Autor desconocido</dc:creator>
+	<dc:date>2019-02-12T19:39:49.47</dc:date>
+		<text:p text:style-name="P1">
+		<text:span text:style-name="T1">[/foreach]</text:span>
+		</text:p>
+</office:annotation>
+
+
+// todo el xml 
+var xml = 'ABABBASDASDSAD<office:annotation><dc:creator>Autor desconocido</dc:creator>	<dc:date>2019-02-12T19:39:49.47</dc:date><text:p text:style-name="P1"><text:span text:style-name="T1">[foreach 99]</text:span></text:p></office:annotation>ABABBASDASDSAD';
+
+// encontrar anotacion 
+var extraerAnotacionREGEX = /<office:annotation>.*<\/office:annotation>/gims;
+var seccionAnotacionDevuelta = xml.match(extraerAnotacionREGEX);
+var seccionAnotacion = '' + seccionAnotacionDevuelta;
+alert(seccionAnotacion);
+
+// encontrar foreach o /foreach
+var extraerForeachREGEX = /\[foreach \d*\]/i;
+var tagForeachDevuelto = seccionAnotacion.match(extraerForeachREGEX);
+alert(tagForeachDevuelto);
+
+// ahora reemplazamos toda la seccion Anotacion
+// por el simple tag foreach
+var resultado = xml.replace(extraerAnotacionREGEX, tagForeachDevuelto);
+alert(resultado);
+
+
+
+
+
+
+
+
+
+
+
+
