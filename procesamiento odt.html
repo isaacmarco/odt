@@ -5,9 +5,19 @@
 <script type="text/javascript" src="https://raw.github.com/Stuk/jszip/master/jszip-utils-ie.min.js.js"></script>
 </head>
 
-<style>
-#holder { border: 10px dashed #ccc; width: 300px; height: 100px; margin: 20px auto;}
-#holder.hover { border: 10px dashed #333; }
+<style> 
+#holder { border: 4px dashed #ccc; width: 500px; height: 100px; margin: 20px ;} 
+#holder.hover { border: 4px dashed #333; }
+ 
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
 
 
@@ -15,34 +25,35 @@
 
 <body>
 
-	<h1>HERRAMIENTA FORMIDABLE-ODT</h1>
-	<h2>PLANTILLA ODT</h2>
+	<h1 style="color:blue;font-family:Trebuchet MS;">Herramientas XML</h1>
+	<h2 style="font-family:Trebuchet MS;">1. Carga de la plantilla odt</h2>
 	 
 	<div id="holder"></div> 
 	<p id="status"></p>
 	 
-	Fichero odt <input type="file" id="file" name="file" /><br/>
-	Nombre que tendrá el fichero al descargarse <input type="text" name="fname"><br>
+	<input type="file" id="file" name="file"/><br/>
+	<!--Nombre que tendrá el fichero al descargarse <input type="text" name="fname"><br>-->
 	<!--URL de la plantilla odt <input type="text" name="fname"><br>--> 
 	
-	<hr>
+	 
 	
 	
-	<h2>CONTENIDO XML</h2>
+	<h2 style="font-family:Trebuchet MS;">2. Extracción del XML</h2>
 	
 	<table style="width:100%">
 		<tr>
-			<th>Contenido XML <button onclick="Copiar('codigoXML')">Copiar</button><br></th>
-			<th>XML Linearizado <button onclick="Copiar('codigoXMLLinearizado')">Copiar</button><br></th>   
+			<th style="font-family:Trebuchet MS;">Contenido XML <button onclick="Copiar('codigoXML', false)">Copiar</button><br></th>
+			<th style="font-family:Trebuchet MS;">XML Linearizado <button onclick="Copiar('codigoXMLLinearizado', true)">Copiar</button><br></th>   
 		</tr>
 		<tr>
-			<td><textarea rows="20" cols="100" id="codigoXML"></textarea></td>
-			<td><textarea rows="20" cols="100" id="codigoXMLLinearizado"></textarea></td>   
+			<td><textarea rows="10" cols="100" id="codigoXML"></textarea></td>
+			<td><textarea rows="10" cols="100" id="codigoXMLLinearizado"></textarea></td>   
 		</tr>  
 	</table>
 	
 	<!--
-	<h2>VISTA FORMIDABLE</h2>
+	<h2 style="font-family:Trebuchet MS;">3. Vista formidable</h2>
+	
 	<button onclick="Copiar('codigoXML')">Copiar</button><br>	
 	<table style="width:100%">		
 		<tr>
@@ -50,6 +61,7 @@
 		</tr>  
 	</table>
 	-->
+	 
 	
 
 </body>
@@ -61,10 +73,15 @@
  
 <script>
 // copia el contenido xml al portapapeles
-function Copiar(nombreContenedor){
+function Copiar(nombreContenedor , linearizar){	 
 	var areaTexto = document.getElementById(nombreContenedor);
+	if(linearizar){
+		// linearizamos el contenido antes de copiarlo
+		var xml = vkbeautify.xmlmin(areaTexto.value);
+		areaTexto.value = xml;
+	}
 	areaTexto.select();	
-	document.execCommand("copy");
+	document.execCommand("copy"); 
 }
 </script>
  
@@ -88,7 +105,6 @@ if (typeof window.FileReader === 'undefined') {
   state.className = 'fail';
 } else {
   state.className = 'success';
-  state.innerHTML = 'Arrastra un ODT';
 }
  
 holder.ondragover = function () { this.className = 'hover'; return false; };
