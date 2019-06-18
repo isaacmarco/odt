@@ -1,6 +1,7 @@
 <head>
 
 
+
 <script>
 /**
 * vkBeautify - javascript plugin to pretty-print or minify text in XML, JSON, CSS and SQL formats.
@@ -366,39 +367,73 @@ window.vkbeautify = new vkbeautify();
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
 <script type="text/javascript" src="https://raw.github.com/Stuk/jszip/master/jszip.js"></script>
 <script type="text/javascript" src="https://raw.github.com/Stuk/jszip/master/jszip-utils-ie.min.js.js"></script>
+
+
+<script>
+var codigoVista = `
+<!-- cabecera -->
+<div id="nombre-descarga">documento.odt</div>
+<div id="url-plantilla">http://servidor/plantilla.odt</div>
+
+<!-- todo el codigo XML del content.xml del odt -->
+<textarea id="xml-vista-formidable" style="display:none;"><codigo xml></textarea>
+		
+<!-- area de descarga -->
+<span id="convert-odt" class="btn btn-outline-success"><i class="fas fa-file-alt"></i> ODT</span>
+<div id="download-area"></div>
+
+<!-- javascript -->
+<script src="https://isaacmarco.github.io/odt/formidable_odt.js"</script> 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/html-docx-js-master/test/vendor/FileSaver.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>`;
+</script>
+
+
+
 </head>
 
 
-<h3>Selecciona un fichero ODT con una plantilla</h3>
-<input type="file" id="file" name="file" multiple /><br />
-<textarea rows="1" cols="100" id="info"></textarea>
+<h1>Herramienta formidable-odt</h1>
+<h2>Plantilla odt</h2>
+	Fichero odt <input type="file" id="file" name="file" /><br/>
+	Nombre de la descarga <input type="text" name="fname"><br>
+	<!--URL de la plantilla odt <input type="text" name="fname"><br>-->
+ 
 <hr>
+<h2>XML</h2>
+<h3></h3>
+
+
 
 <h2>content.xml</h2>
-<button onclick="Copiar('contenedor')">Copiar content.xml</button><br>
-<button onclick="CopiarMinimazado('contenedor')">Copiar content.xml minimizado</button><br>
-<textarea rows="20" cols="100" id="contenedor"></textarea>
-<h2>header.xml</h2>
-<button onclick="CopiarCabecera()">Copiar header.xml</button><br>
-<button onclick="CopiarCabeceraMinimizado()">Copiar header.xml minimazdo</button><br>
-<textarea rows="20" cols="100" id="cabecera"></textarea>
 
-<!-- areas ocultas -->
-<input rows="20" cols="100" id="contenedorOculto" type="hidden"></input>
-<input rows="20" cols="100" id="cabeceraOculto" type="hidden"></input>
+<button onclick="Copiar('codigoXML')">Copiar content.xml</button><br>
+<button onclick="CopiarMinimazado('codigoXML')">Copiar content.xml minimizado</button><br>
+
+
+<textarea rows="20" cols="100" id="codigoXML"></textarea>
+<textarea rows="20" cols="100" id="codigoVista"></textarea>
+<textarea rows="20" cols="100" id="contenedorOculto"></textarea>
+
+
+ 
+ 
 <script>
 
 
-
+// copia el contenido xml al portapapeles
 function Copiar(nombreContenedor){
 	var textArea = document.getElementById(nombreContenedor);
 	contenedor.select();	
 	document.execCommand("copy");
 }
+
+// lineariza el xml y lo copia al portapapeles
 function CopiarMinimazado(nombreContenedor){
 	// pasar el contenido del contenedor al oculto
-	var textArea = document.getElementById(nombreContenedor);
-	var contenedorOculto = document.getElementById('cabecera');	
+	var textArea = document.getElementById(nombreContenedor);	
+	var contenedorOculto = document.getElementById('contenedorOculto');	
 	contenedorOculto.value = vkbeautify.xmlmin(textArea.value);
 	contenedorOculto.select();
 	document.execCommand("copy");
@@ -407,11 +442,14 @@ function CopiarMinimazado(nombreContenedor){
 
 </script>
 
+ 
 <script>	
+/*
 jQuery('document').ready(function () {    
-$('#info').val('version 4');
+$('#info').val('version 5');
 });
-</script>
+*/
+</script> 
 
 <script>
 var $result = $("#result");
@@ -471,9 +509,7 @@ $("#file").on("change", function(evt) {
 					zip.file("content.xml").async("string").then(function (data) {
 					
 					// formatear el XML 
-					var xmlFormateado = data; //vkbeautify.xml(data);					
-					
-					//xmlFormateado = vkbeautify.xmlmin(xmlFormateado);
+					var xmlFormateado = data; 					
 					xmlFormateado = vkbeautify.xml(xmlFormateado);
 					
 					
@@ -496,7 +532,7 @@ $("#file").on("change", function(evt) {
 					
 					
 					// mostrar en el text area 
-					$('#contenedor').val(xmlFormateado);
+					$('#codigoXML').val(xmlFormateado);
 					
 					
 					
@@ -527,4 +563,3 @@ $("#file").on("change", function(evt) {
     }
 });
 </script>
-
