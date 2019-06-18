@@ -53,43 +53,6 @@ holder.ondrop = function (e) {
 
 	
 	
-		
-		
-		 /*
-		if (typeof someObject == 'undefined') $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js', function () {
-			
-            var req = new XMLHttpRequest();
-			
-		
-			// abrimos el fichero 
-            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroContenedor + '.odt'); 			 
-            req.responseType = 'arraybuffer';
-            
-			req.addEventListener('load', function () {				
-					
-				
-				// fichero de la plantilla descargada
-				var ficheroContenedor = req.response;          
-				// 	obtenemos un content y un styles xml vacios desde el fichero 
-				var odtdoc = new ODTContent(ficheroContenedor);
-								
-				// volcamos todo el XML de la vista formidable en el content.xml 				
-				odtdoc.setXML(xml_content, xml_styles_plantilla);
-								 
-				
-				// obtenemos el ODT ya comprimido
-				var odt = odtdoc.getODT();	
-				// pasamos el odt a largue binary object
-				var blob = b64toBlob(odt, "application/vnd.oasis.opendocument.text");				
-				// creamos el link de descarga
-				CrearLinkDescarga(blob);
-				
-            });			
-			
-            req.send();
-            $.loadScript('http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/jszip/dist/jszip.min.js');
-        });*/
-		 
 
   return false;
 };
