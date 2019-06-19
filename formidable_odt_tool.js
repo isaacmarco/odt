@@ -23,9 +23,9 @@
 // el content.xml y el styles.xml en el fichero odt 
 var ODTContent = function(odt, options){	
 	var zip = new JSZip(odt, options);	
-	this.setXML = function(contentXML, stylesXML){
+	this.setXML = function(contentXML){ //, stylesXML){
 		zip.file('content.xml', contentXML);
-		zip.file('styles.xml', stylesXML);
+		//zip.file('styles.xml', stylesXML);
 	}		 
 	this.getODT = function(options) {
 		return zip.generate(options);
@@ -51,7 +51,7 @@ function EliminarTildes(contenidoXML) {
 jQuery('document').ready(function () {    
 	
 	
-	console.log('version codigo custom-odt-tool 2');
+	console.log('version codigo custom-odt-tool 3');
 		
 		
     jQuery("#convert-odt").click(function () {		
@@ -98,7 +98,7 @@ jQuery('document').ready(function () {
 				// volcamos todo el XML de la vista formidable en el content.xml,
 				// se usaran la configuracion de cabeceras y pies de paginas
 				// que tiene el styles.xml
-				odtdoc.setXML(xml_content, xml_styles_plantilla);
+				odtdoc.setXML(xml_content); //, xml_styles_plantilla);
 				
 				 
 				
