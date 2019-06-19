@@ -38,23 +38,23 @@
 		</tr>  
 	</table>
 	
-	<!--
-	<h2 style="font-family:Trebuchet MS;">3. Parámetros</h2>
-	Nombre que tendrá el fichero al descargarse <input type="text" name="fname"><br>
-	URL de la plantilla odt <input type="text" name="fname"><br>
-	<input type="checkbox" name="vehicle1" value="Bike">Plantilla horizontal<br>
+	 
+	<h2 style="font-family:Trebuchet MS;">3. Parámetros (uso general cau_ce)</h2>
+	Nombre que tendrá el fichero al descargarse <input type="text" name="fname" id="nombre-descarga"><br>
+	URL de la plantilla odt <input type="text" name="fname" id="url-odt"><br>
+	<!--<input type="checkbox" name="vehicle1" value="Bike">Plantilla horizontal<br>-->
 	 
 	
 	
 	<h2 style="font-family:Trebuchet MS;">4. Vista formidable</h2>
-	
-	<button onclick="Copiar('codigoXML')">Copiar</button><br>	
+	<button onclick="GenerarVista()">Generar</button>
+	<button onclick="Copiar('codigoVista', false)">Copiar</button><br>	
 	<table style="width:100%">		
 		<tr>
 			<td><textarea rows="20" cols="100" id="codigoVista"></textarea></td>
 		</tr>  
 	</table>
-	-->
+	 
 	 
 	 
 	
@@ -62,7 +62,31 @@
 </body>
 
 
- 
+
+<script>
+function ObtenerCodigoXMLLinearizado(){
+	var areaTexto = document.getElementById('codigoXML');
+	return vkbeautify.xmlmin(areaTexto.value);
+}
+
+// genera todo el codigo de la vista para
+// formidable
+function GenerarVista(){
+	// obtener el javascript y html basico de la vista 
+	var codigoBaseVista = ObtenerContenidoVista();
+	// insertar el codigo xml en el tag <codigoXML>
+	var codigoXMLVista = codigoBaseVista.replace('<codigoXML>', ObtenerCodigoXMLLinearizado());
+	// insertar los campos de configuracion de la plantilla 
+	// primero se obtienen los campos y despues se introducen 
+	var urlODT = document.getElementById('url-odt').value;
+	var nombreDescarga = document.getElementById('nombre-descarga').value;
+	codigoXMLVista = codigoXMLVista.replace('<url-odt>', urlODT);
+	codigoXMLVista = codigoXMLVista.replace('<nombre-descarga>', nombreDescarga);	
+	// insertar el codigo en el textarea 
+	var areaTexto = document.getElementById('codigoVista');	
+	areaTexto.value = codigoXMLVista;
+}
+</script>
  
  
  
@@ -194,7 +218,32 @@ $("#file").on("change", function(evt) {
 
  
 <script>
-var contenidoVista = `<!-- contenido de la vista -->
+// contenid de vista generica para documento de cau_ce
+var contenidoVista = `<!-- 
+url-odt: URL de la plantilla del documento .odt
+nombre-descarga: el nombre del fichero al descargarse
+-->
+<div id="url-odt" style="display:none;"><url-odt></div>
+<div id="nombre-descarga" style="display:none;"><nombre-descarga></div>
+ 
+
+<!-- area de descarga -->
+<span id="convert-odt" class="btn btn-outline-success"><i class="fas fa-file-alt"></i> ODT</span>
+<div id="download-area"></div>
+
+<!-- javascript -->
+<libreria src="https://isaacmarco.github.io/odt/formidable_odt_tool.js?ver='+ new Date().getTime()"></libreria> 
+<libreria src="https://code.jquery.com/jquery-1.10.2.js"></libreria>
+<libreria src="http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/html-docx-js-master/test/vendor/FileSaver.js"></libreria>
+<libreria src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></libreria>
+
+
+<!-- todo el codigo XML del content.xml del odt -->
+<textarea id="xml-vista-formidable" style="display:none;"><codigoXML></textarea>
+`;
+
+// contenido de la vista para plantillas del proyecto brujula 
+var contenidoVista_plantillas_brujula = `<!-- contenido de la vista -->
 	
 <!-- cabecera -->
 <div id="nombre-descarga">documento.odt</div>
@@ -214,11 +263,13 @@ var contenidoVista = `<!-- contenido de la vista -->
 <libreria src="https://code.jquery.com/jquery-1.10.2.js"></libreria>
 <libreria src="http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/html-docx-js-master/test/vendor/FileSaver.js"></libreria>
 <libreria src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></libreria>`;
+
 // cambia los tags <libreria> por los de script y devuelve 
 // el codigo de la vista
 function ObtenerContenidoVista(){
-	return contenidoVista.replace('libreria', 'script');
+	return contenidoVista.replace(/libreria/g, 'script');
 }
+
 </script>
  
 

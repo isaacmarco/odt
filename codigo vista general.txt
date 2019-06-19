@@ -1,0 +1,24 @@
+<!-- 
+url-odt: URL de la plantilla del documento .odt
+nombre-descarga: el nombre del fichero al descargarse
+-->
+<div id="url-odt" style="display:none;">odt</div>
+<div id="nombre-descarga" style="display:none;">documento descargado.odt</div>
+ 
+
+<!-- area de descarga -->
+<span id="convert-odt" class="btn btn-outline-success"><i class="fas fa-file-alt"></i> ODT</span>
+<div id="download-area"></div>
+
+<!-- javascript -->
+<libreria src="https://isaacmarco.github.io/odt/formidable_odt_tool.js?ver='+ new Date().getTime()"></libreria> 
+<libreria src="https://code.jquery.com/jquery-1.10.2.js"></libreria>
+<libreria src="http://www3.gobiernodecanarias.org/medusa/contenidosdigitales/js/html-docx-js-master/test/vendor/FileSaver.js"></libreria>
+<libreria src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></libreria>
+
+
+<!-- todo el codigo XML del content.xml del odt -->
+<textarea id="xml-vista-formidable" style="display:none;"></textarea>
+
+
+
