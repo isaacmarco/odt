@@ -70,13 +70,13 @@ jQuery('document').ready(function () {
 			
 			// obtener el nombre del fichero contenedor del que se obtendran
 			// el styles.xml y el content.xml desde la vista formidable 
-			var nombreFicheroContenedor = jQuery('div#nombre-contenedor').html();				
+			var urlFicheroODT = jQuery('div#url-odt').html();				
 						
 			// abrimos el fichero
 			// TODO: LA URL DE LA PLANTILLA DEBERIA IR EN LA VISTA PARA
 			// SER MAS GENERAL 
-			
-            req.open('GET','https://isaacmarco.github.io/odt/' + nombreFicheroContenedor + '.odt'); 			 
+			// req.open('GET',urlFicheroODT); 	
+            req.open('GET','https://isaacmarco.github.io/odt/' + urlFicheroODT + '.odt'); 			 
             req.responseType = 'arraybuffer';
             
 			req.addEventListener('load', function () {				
@@ -125,7 +125,7 @@ jQuery('document').ready(function () {
 	function CrearLinkDescarga(blob){		
 		var link = document.createElement('a');
 		link.href = URL.createObjectURL(blob);	
-		link.download = jQuery('div#nombre-odt').html();
+		link.download = jQuery('div#nombre-descarga').html();
 		link.appendChild(
 			document.createTextNode('Haga clic aqu\u00ED si su descarga no se inici\u00F3 autom\u00E1ticamente')
 		);
